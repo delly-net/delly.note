@@ -15,4 +15,12 @@
 		<ProjectReference Include="..\..\..\Infrastructure\Delly.Note.Common\Delly.Note.Common.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<!-- 复制wwwroot所有文件到输出目录 -->
+		<Content Update="wwwroot\**\*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
 </Project>

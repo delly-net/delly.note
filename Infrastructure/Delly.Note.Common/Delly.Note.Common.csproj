@@ -9,6 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Jip.Configuration.Common" Version="3.2.67" />
 	  <PackageReference Include="Jip.Kernel.Common" Version="3.2.67" />
 	  <PackageReference Include="Jip.WebApi.App" Version="3.2.67" />
 	</ItemGroup>

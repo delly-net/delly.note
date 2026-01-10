@@ -8,7 +8,7 @@ namespace Delly.Note.Razor;
 /// Razor页 模块入口
 /// </summary>
 [Depends(typeof(DellyNoteCommonEntry))]
-public sealed class DellyNoteRazorModuleEntry : BaseModuleEntry
+public sealed class DellyNoteRazorEntry : BaseModuleEntry
 {
 
 }

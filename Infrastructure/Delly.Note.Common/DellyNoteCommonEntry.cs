@@ -1,4 +1,5 @@
-﻿using Jip.Kernel.Common;
+﻿using Jip.Configuration.Common;
+using Jip.Kernel.Common;
 using Jip.WebApi.App;
 using Nuo.Ioc.Modular;
 using Nuo.Ioc.Modular.Attribute;
@@ -10,7 +11,8 @@ namespace Delly.Note.Common;
 /// </summary>
 [Depends(
     typeof(JipWebApiAppEntry),
-    typeof(JipKernelCommonEntry)
+    typeof(JipKernelCommonEntry),
+    typeof(JipConfigurationCommonModuleEntry)
     )]
 public sealed class DellyNoteCommonEntry : BaseModuleEntry
 {

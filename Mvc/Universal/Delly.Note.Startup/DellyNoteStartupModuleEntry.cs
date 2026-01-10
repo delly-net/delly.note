@@ -19,7 +19,7 @@ public class DellyNoteStartupModuleEntry : BaseModuleEntry
         Depend<JipWebApiDbLogTaskJobEntry>();
         Depend<SupWebApiKernelPlugEntry>();
         // 加载DellyNote特殊模块
-        Depend<DellyNoteRazorModuleEntry>();
+        Depend<DellyNoteRazorEntry>();
         Depend<DellyNoteAppEntry>();
     }
 }

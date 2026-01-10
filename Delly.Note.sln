@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delly.Note.Linux", "Mvc\Hos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delly.Note.App", "Mvc\Universal\Delly.Note.App\Delly.Note.App.csproj", "{B7A2406A-FADF-4855-9B5F-92BC0817CD22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delly.Note.Sqlite.Docker", "Mvc\Host\Delly.Note.Sqlite.Docker\Delly.Note.Sqlite.Docker.csproj", "{E6CAF316-CBB0-464A-AACE-033FFD2DAA9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{B7A2406A-FADF-4855-9B5F-92BC0817CD22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7A2406A-FADF-4855-9B5F-92BC0817CD22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7A2406A-FADF-4855-9B5F-92BC0817CD22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6CAF316-CBB0-464A-AACE-033FFD2DAA9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6CAF316-CBB0-464A-AACE-033FFD2DAA9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6CAF316-CBB0-464A-AACE-033FFD2DAA9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6CAF316-CBB0-464A-AACE-033FFD2DAA9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{48B73D19-F653-46BE-828C-2B6F3C5C3473} = {98EEF904-C892-4EA6-9D5D-DECB4174EB2C}
 		{F54B32F8-36DE-4899-89AB-1E53F275241A} = {7B85DE7E-FC01-4BE0-B310-FE90A82385CB}
 		{B7A2406A-FADF-4855-9B5F-92BC0817CD22} = {98EEF904-C892-4EA6-9D5D-DECB4174EB2C}
+		{E6CAF316-CBB0-464A-AACE-033FFD2DAA9F} = {7B85DE7E-FC01-4BE0-B310-FE90A82385CB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {346AE8D9-65BF-4836-8094-6B850C80EFEC}

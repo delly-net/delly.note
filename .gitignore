@@ -351,3 +351,7 @@ MigrationBackup/
 
 # 兼容rider
 .idea/
+
+# 兼容发布
+Deploy/*/files
+Deploy/*/images

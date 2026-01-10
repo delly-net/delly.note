@@ -39,7 +39,7 @@ public class IndexModel : BaseGenericPageModel
     /// <returns></returns>
     public async Task OnGetAsync()
     {
-        using var uow = _uowCommonCore.Begin();
+        //using var uow = _uowCommonCore.Begin();
         // 附加样式
         this.AppendCss("css/index.css");
         //// 处理模板数据
