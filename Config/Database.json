@@ -1,0 +1,18 @@
+{
+  "Jcms": {
+    "Type": "SQLITE",
+    "ConnectionString": "data source=/var/lib/jcms/data.db;version=3;"
+  },
+  "Default": {
+    "Type": "SQLITE",
+    "ConnectionString": "data source=/var/lib/jcms/data.db;version=3;"
+  },
+  "Jip": {
+    "Type": "SQLITE",
+    "ConnectionString": "data source=/var/lib/jcms/data.db;version=3;"
+  },
+  "Log": {
+    "Type": "SQLITE",
+    "ConnectionString": "data source=/var/lib/jcms/data.db;version=3;"
+  }
+}

@@ -1,0 +1,13 @@
+﻿@page
+@using Delly.Note.Razor.Pages
+@model ContentModel
+
+<!-- 页面标题 -->
+<section class="page-title">
+    <s></s>
+    <a href="/?lang=@Model.Language">@Model.Lpm.Home</a>
+    <i>/</i>
+    <span>@Model.Note.Title</span>
+</section>
+<!-- 页面内容 -->
+<section class="page-content">@Html.Raw(Model.Note.Content)</section>

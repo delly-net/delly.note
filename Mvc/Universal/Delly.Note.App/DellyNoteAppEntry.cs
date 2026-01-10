@@ -1,0 +1,18 @@
+﻿using Delly.Note.Common;
+using Jip.WebApi.Service;
+using Nuo.Ioc.Modular;
+using Nuo.Ioc.Modular.Attribute;
+
+namespace Delly.Note.App;
+
+/// <summary>
+/// Delly Note 应用模块入口
+/// </summary>
+[Depends(
+    typeof(JipWebApiServiceEntry),
+    typeof(DellyNoteCommonEntry)
+    )]
+public class DellyNoteAppEntry : BaseModuleEntry
+{
+
+}

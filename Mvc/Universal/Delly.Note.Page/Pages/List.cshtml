@@ -1,0 +1,60 @@
+﻿@page
+@using Delly.Note.Razor.Pages
+@using Nuo.Extension
+@model ListModel
+
+<!-- 页面标题 -->
+<section class="page-title">
+    <s></s>
+    <a href="/?lang=@Model.Language">@Model.Lpm.Home</a>
+    @if (!Model.Key.IsNullOrWhiteSpace())
+    {
+        <i>/</i>
+        <a href="/Product?lang=@Model.Language">@Model.Lpm.Products</a>
+        <i>/</i>
+        <span>@Model.Key</span>
+    }
+    else
+    {
+        <i>/</i>
+        <span>@Model.Lpm.Products</span>
+    }
+</section>
+<!-- 产品展示 -->
+<section id="products" class="products-section">
+    <div class="product-grid">
+        @foreach (var product in Model.NotePaged.Rows)
+        {
+            <!-- 产品 -->
+            <article class="product-card">
+                <a class="product-image" href="/ProductContentPage?lang=@Model.Language&id=@product.Id">
+                    @* <img src="@product.Image" alt="@product.Title"> width="300" height="200">
+                    <span class="product-badge">@product.CategoryName</span> *@
+                </a>
+                <div class="product-info">
+                    <h3 class="product-title">@product.Title</h3>
+                    <ul class="product-features">
+                        <li><i class="fas fa-check"></i>@Model.Lpm.Oem</li>
+                        <li><i class="fas fa-cog"></i>@Model.Lpm.Customized</li>
+                        <li><i class="fas fa-shield-alt"></i>@Model.Lpm.QualityAssurance</li>
+                    </ul>
+                    <a href="javascript:void(0);" onclick="$site.showQuotation();"
+                       class="cta-button">@Model.Lpm.Quotation</a>
+                </div>
+            </article>
+        }
+    </div>
+</section>
+<!-- 页码 -->
+<section class="paged">
+    @if (Model.NotePaged.Page > 1)
+    {
+        <a href="/product?lang=@Model.Language&key=@Uri.EscapeDataString(Model.Key)&page=1">&lt;&lt;</a>
+        <a href="/product?lang=@Model.Language&key=@Uri.EscapeDataString(Model.Key)&page=@(Model.NotePaged.Page - 1)">&lt;</a>
+    }
+    @if (Model.NotePaged.Page < Model.NotePaged.PageTotal)
+    {
+        <a href="/product?lang=@Model.Language&key=@Uri.EscapeDataString(Model.Key)&page=@(Model.NotePaged.Page + 1)">&gt;</a>
+        <a href="/product?lang=@Model.Language&key=@Uri.EscapeDataString(Model.Key)&page=@Model.NotePaged.PageTotal">&gt;&gt;</a>
+    }
+</section>

@@ -1,0 +1,58 @@
+/* 页面标题 */
+.page-title {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    /*justify-content: center;*/
+    /*text-align: center;*/
+    border-bottom: 1px solid var(--split);
+    font-size: 1.2rem;
+    color: var(--dark-text);
+}
+
+.page-title s {
+    display: block;
+    width: 0.5rem;
+    height: 1.8rem;
+    background: var(--primary-color);
+}
+
+.page-title span {
+    margin: 0 0.8rem;
+}
+
+.page-title a {
+    margin: 0 0.8rem;
+    text-decoration: none;
+    color: var(--dark-text);
+}
+
+.page-title i {
+    color: var(--split);
+}
+
+/* 页面内容 */
+.page-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: var(--text);
+}
+
+/* 页面按钮 */
+.page-button {
+    padding: 0.5rem 1rem;
+    text-align: center;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    /* 主视觉区 */
+    .hero-section {
+        display: none;
+    }
+}

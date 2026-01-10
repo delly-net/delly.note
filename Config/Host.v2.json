@@ -1,0 +1,43 @@
+{
+    "Development": {
+        "UseDeveloperExceptionPage": false
+    },
+    "Log": {
+        "UseVerboseMode": false
+    },
+    "Https": {
+        "UseHsts": false,
+        "UseHttpsRedirection": false
+    },
+    "Cors": {
+        "Enabled": false
+    },
+    "Swagger": {
+        "Enabled": false,
+        "Categories": [
+            {
+                "Name": "all",
+                "Description": "All Apis",
+                "Keyword": "*"
+            }
+        ]
+    },
+    "StaticFile": {
+        "Enabled": true,
+        "DefaultPages": [],
+        "NotFoundPage": "404.html",
+        "Path": "${EXECUTION}wwwroot",
+        "NoCache": false,
+        "Mimes": {}
+    },
+    "RazorPage": {
+        "Enabled": true
+    },
+    "Controller": {
+        "Enabled": true,
+        "AppService": {
+            "Enabled": true,
+            "RouteRoot": "/app"
+        }
+    }
+}

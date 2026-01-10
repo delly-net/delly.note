@@ -1,0 +1,114 @@
+{
+    "DefaultTableNamingPolicies": "SMALL_UNDERLINE",
+    "DefaultColumnNamingPolicies": "SMALL_UNDERLINE",
+    "Tables": {
+        "Jcms.WebApi.Kernel.Entity.Render.WebSite.SiteDefine": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jcms.WebApi.Kernel.Entity.Render.WebSite.SitePage": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jcms.WebApi.Kernel.Entity.Basic.Template.TemplateDefine": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jcms.WebApi.Kernel.Entity.Basic.Template.TemplateNode": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jcms.WebApi.Kernel.Entity.Basic.Template.TemplatePublish": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jcms.WebApi.Kernel.Entity.Basic.Property.PropertyDefine": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jcms.WebApi.Kernel.Entity.Basic.Property.PropertyValue": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jcms.WebApi.Kernel.Entity.Basic.Component.ComponentDefine": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Permission.PermissionDefine.SupPermission": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Permission.PermissionDefine.SupPermissionGroup": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Permission.PermissionAssignment.SupPermissionAssignment": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Permission.PermissionAssignment.SupPermissionAssignmentHistory": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Feature.FeatureDefine.SupFeature": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Feature.FeatureDefine.SupFeatureCategory": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Feature.FeatureDefine.SupFeatureMenu": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Feature.FeatureDefine.SupFeatureType": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Authorize.UserTenant.SupApplication": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Authorize.UserTenant.SupTenant": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Authorize.UserTenant.SupUserTenant": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Authorize.UserAuthorize.SupUser": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Authorize.UserAuthorize.SupUserGroup": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Authorize.UserAuthorize.SupUserGrouping": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jip.WebApi.Kernel.Entity.Authorize.UserAuthorize.SupUserToken": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jcms.WebApi.Article.Entity.Render.Information.ArticleInfo": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jcms.WebApi.Article.Entity.Render.Hypertext.HtmlInfo": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jcms.WebApi.Article.Entity.Basic.Structure.CategoryDefine": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        },
+        "Jcms.WebApi.Article.Entity.Basic.Structure.TopicDefine": {
+            "Schema": "",
+            "ConnectionName": "Default"
+        }
+    }
+}

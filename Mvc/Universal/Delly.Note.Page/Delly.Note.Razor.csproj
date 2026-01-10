@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<Version>0.0.1</Version>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<OutputType>Library</OutputType>
+		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+		<EnableDefaultContentItems>true</EnableDefaultContentItems>
+		<RestoreSources>https://nuget.jueyun.net/v3/index.json;https://nuget.azure.cn/v3/index.json</RestoreSources>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Infrastructure\Delly.Note.Common\Delly.Note.Common.csproj" />
+	</ItemGroup>
+
+</Project>

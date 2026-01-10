@@ -1,0 +1,106 @@
+﻿@using System.Text
+@using Delly.Note.Razor.Localization
+@using Nuo.Extension
+@{
+    // 获取页面样式
+    var pageCss = (List<string>?)ViewData["css"] ?? [];
+    // 获取语言
+    var language = (string?)ViewData["lang"] ?? "en";
+    // 获取站点信息
+    // var sites = (List<SiteDefine>?)ViewData["sites"] ?? [];
+    // var siteDefine = (SiteDefine?)ViewData["site"] ?? new SiteDefine();
+    // var siteAlign = siteDefine.LayoutAlign == LayoutAlignTypeEnum.LEFT_TO_RIGHT ? "ltr" : "rtl";
+    // 获取快速访问
+    // var quickLinks = (List<ArticleViewDto>?)ViewData["quick_links"] ?? [];
+    // var follows = (List<ArticleViewDto>?)ViewData["follows"] ?? [];
+    // 获取语言包信息
+    var lpm = (MvcLpm?)ViewData["lpm"] ?? new MvcLpm();
+    // 获取标题
+    var title = ViewData["title"]?.ToString();
+    // 获取是否显示Banner图
+    var isBannerVisible= (bool?)ViewData["banner_visible"] ?? false;
+    var pageTitle = new StringBuilder();
+    if (!title.IsNullOrWhiteSpace())
+    {
+        pageTitle.Append(title);
+        pageTitle.Append(" - ");
+    }
+    pageTitle.Append("YetMee");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@pageTitle.ToString()</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    @foreach (var css in pageCss)
+    {
+        <link rel="stylesheet" href="@css"/>
+    }
+</head>
+<body>
+<!-- 头部 -->
+<header class="sticky-header">
+    <nav class="nav-container">
+        <!-- 移动端按钮 -->
+        <a id="mobile-menu" title="mobile" href="javascript:;"><img alt="" src="~/image/menu.svg"/></a>
+        <!-- 移动端按钮 -->
+        <a href="#" class="logo">YetMee</a>
+        <!-- 搜索框 -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="@lpm.SearchProduct">
+            <button title="search" class="search-button"><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="nav-links">
+            <a href="/?lang=@language" data-translate="home">@lpm.Home</a>
+            <a href="/product?lang=@language" data-translate="products">@lpm.Products</a>
+            <a href="/ContentPage?code=ABOUT&lang=@language" data-translate="about">@lpm.About</a>
+            <a href="/ContentPage?code=CONTACT_US&lang=@language" data-translate="contact">@lpm.ContactUs</a>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    @if (isBannerVisible)
+    {
+        <!-- 主视觉 -->
+        <section class="hero-section">
+            <img src="image/banner.jpg" alt="">
+        </section>
+    }
+    @RenderBody()
+</div>
+
+<!-- 页脚 -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>@lpm.ContactUs</h3>
+            <div class="contact-info">
+                <p><i class="fas fa-map-marker-alt"></i>@lpm.Address</p>
+                <p><i class="fas fa-phone"></i>@lpm.Phone</p>
+                <p><i class="fas fa-envelope"></i>@lpm.Email</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- 联系弹窗 -->
+<section class="dig-quotation" style="display: none">
+    <div class="box">
+        <div class="title">@lpm.Quotation</div>
+        <div class="tip">@lpm.QuotationTip</div>
+        <div class="confirm"><a href="javascript:void(0);" onclick="$site.hideQuotation();" class="cta-button">@lpm.Confirm</a></div>
+    </div>
+</section>
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
+
+<script type="text/javascript">
+    @* $site.setLayoutAlign("@siteAlign"); *@
+</script>
+</body>
+</html>

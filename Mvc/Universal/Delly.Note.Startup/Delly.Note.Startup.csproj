@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Version>0.0.1</Version>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RestoreSources>https://nuget.jueyun.net/v3/index.json;https://nuget.azure.cn/v3/index.json</RestoreSources>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Jip.WebApi.DbLog.TaskJob" Version="3.2.67" />
+	  <PackageReference Include="Jip.WebApi.Kernel.Plug" Version="3.2.67" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Delly.Note.App\Delly.Note.App.csproj" />
+		<ProjectReference Include="..\Delly.Note.Page\Delly.Note.Razor.csproj" />
+	</ItemGroup>
+
+</Project>
