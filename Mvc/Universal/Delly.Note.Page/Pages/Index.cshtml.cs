@@ -50,7 +50,9 @@ public class IndexModel : BaseGenericPageModel
         this.SetLanguagePack(lpm);
         Lpm = lpm;
         // 设置标题
-        this.SetTitle(lpm.Home);
+        this.SetTitle(lpm.DellyNote);
+        // 设置标志
+        this.SetFlag(nameof(IndexModel));
         // 设置Banner图显示
         this.SetBannerVisible(true);
     }

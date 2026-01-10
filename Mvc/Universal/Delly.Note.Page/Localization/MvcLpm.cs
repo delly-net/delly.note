@@ -19,7 +19,42 @@ public sealed class MvcLpm : BaseLanguageModulePack
     [NotNull]
     [Initial("主页")]
     public string? Home { get; set; }
-    
+
+    /// <summary>
+    /// 小D笔记
+    /// </summary>
+    [NotNull]
+    [Initial("小D笔记")]
+    public string? DellyNote { get; set; }
+
+    /// <summary>
+    /// 所有笔记
+    /// </summary>
+    [NotNull]
+    [Initial("所有笔记")]
+    public string? AllNotes { get; set; }
+
+    /// <summary>
+    /// 添加笔记
+    /// </summary>
+    [NotNull]
+    [Initial("添加笔记")]
+    public string? AddNote { get; set; }
+
+    /// <summary>
+    /// 登录
+    /// </summary>
+    [NotNull]
+    [Initial("登录")]
+    public string? Login { get; set; }
+
+    /// <summary>
+    /// 注销
+    /// </summary>
+    [NotNull]
+    [Initial("注销")]
+    public string? Logout { get; set; }
+
     /// <summary>
     /// 所有产品
     /// </summary>
@@ -61,12 +96,12 @@ public sealed class MvcLpm : BaseLanguageModulePack
     [NotNull]
     [Initial("搜索产品")]
     public string? SearchProduct { get; set; }
-    
+
     /// <summary>
-    /// 标语
+    /// 让笔记更简单
     /// </summary>
     [NotNull]
-    [Initial("标语")]
+    [Initial("让笔记更简单")]
     public string? Slogan { get; set; }
     
     /// <summary>

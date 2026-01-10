@@ -51,7 +51,7 @@ public class ListModel : BaseGenericPageModel
     /// <returns></returns>
     public async Task OnGetAsync()
     {
-        using var uow = _uowCommonCore.Begin();
+        //using var uow = _uowCommonCore.Begin();
         // 附加样式
         this.AppendCss("css/product.css");
         //// 处理模板数据
@@ -63,6 +63,8 @@ public class ListModel : BaseGenericPageModel
         Lpm = lpm;
         // 设置标题
         this.SetTitle(lpm.Home);
+        // 设置标志
+        this.SetFlag(nameof(ListModel));
         // 获取页码
         if (!int.TryParse(Request.Query["page"].ToString(), out var page))
         {

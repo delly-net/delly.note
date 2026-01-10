@@ -37,6 +37,16 @@ public static class PageModelExtension
     }
 
     /// <summary>
+    /// 设置标识
+    /// </summary>
+    /// <param name="page"></param>
+    /// <param name="title"></param>
+    public static void SetFlag(this PageModel page, string flag)
+    {
+        page.ViewData["flag"] = flag;
+    }
+
+    /// <summary>
     /// 获取语言设置
     /// </summary>
     /// <param name="page"></param>

@@ -2,8 +2,45 @@
 @using Delly.Note.Razor.Pages
 @model IndexModel
 
-<!-- 产品展示 -->
-<section id="products" class="products-section">
-    <h2 class="section-title">@Model.Lpm.SelectProduct</h2>
-    <div class="product-grid"></div>
+<!-- Logo -->
+<section class="logo-section">
+    <img src="~/image/delly1_256.png" alt="@Model.Lpm.DellyNote" title="@Model.Lpm.DellyNote" class="logo" />
+    <h1>@Model.Lpm.DellyNote</h1>
+    <span>@Model.Lpm.Slogan</span>
+</section>
+<section class="note-section">
+    <div class="row">
+        <div class="note" style="border-left: 6px solid #7ab968;">
+            <h1>第一篇笔记</h1>
+            <span>于 1分钟前 最后更新</span>
+            <span>于 1小时前 创建</span>
+        </div>
+        <div class="note" style="border-left: 6px solid #7ab968;">
+            <h1>第二篇笔记</h1>
+            <span>于 1小时前 最后更新</span>
+            <span>于 1天前 创建</span>
+        </div>
+        <div class="note" style="border-left: 6px solid #7ab968;">
+            <h1>第一行第三篇笔记</h1>
+            <span>于 10天前 最后更新</span>
+            <span>于 2025-12-18 22:16 创建</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="note" style="border-left: 6px solid #7ab968;">
+            <h1>第二行第一篇笔记</h1>
+            <span>于 1分钟前 最后更新</span>
+            <span>于 1小时前 创建</span>
+        </div>
+        <div class="note" style="border-left: 6px solid #7ab968;">
+            <h1>第二篇笔记</h1>
+            <span>于 1小时前 最后更新</span>
+            <span>于 1天前 创建</span>
+        </div>
+        <div class="note" style="border-left: 6px solid #7ab968;">
+            <h1>第一行第三篇笔记</h1>
+            <span>于 10天前 最后更新</span>
+            <span>于 2025-12-18 22:16 创建</span>
+        </div>
+    </div>
 </section>
