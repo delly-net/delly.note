@@ -14,7 +14,7 @@ namespace Delly.Note.Startup;
 /// <summary>
 /// Yetmee Mvc 启动器
 /// </summary>
-public sealed class DellyNoteStartup: BaseGenericWebApiStartup
+public class DellyNoteStartup: BaseGenericWebApiStartup
 {
     /// <summary>
     /// 

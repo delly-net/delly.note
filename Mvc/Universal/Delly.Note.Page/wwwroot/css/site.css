@@ -24,6 +24,8 @@ body {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     color: var(--primary-color);
     background: var(--dark-bg);
+    width: 100%;
+    height: 100%;
 }
 
 * {
@@ -70,19 +72,7 @@ body {
     background: var(--dark-bg-mask);
 }
 
-/* 移动菜单 */
-#mobile-menu {
-    display: none;
-    width: 1.8rem;
-    height: 1.8rem;
-    overflow: hidden;
-}
-
-#mobile-menu img {
-    width: 100%;
-}
-
-.nav-container {
+.site-header .nav-container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -94,11 +84,23 @@ body {
     height: 6rem
 }
 
-.logo {
+.site-header .logo {
     color: white;
     font-size: 2.6rem;
     text-decoration: none;
     line-height: 4.6rem;
+}
+
+/* 移动菜单 */
+#mobile-menu {
+    display: none;
+    width: 1.8rem;
+    height: 1.8rem;
+    overflow: hidden;
+}
+
+#mobile-menu img {
+    width: 100%;
 }
 
 /* 导航链接 */

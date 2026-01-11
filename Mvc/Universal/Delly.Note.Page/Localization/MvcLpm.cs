@@ -35,11 +35,11 @@ public sealed class MvcLpm : BaseLanguageModulePack
     public string? AllNotes { get; set; }
 
     /// <summary>
-    /// 添加笔记
+    /// 添加Markdown笔记
     /// </summary>
     [NotNull]
-    [Initial("添加笔记")]
-    public string? AddNote { get; set; }
+    [Initial("添加Markdown笔记")]
+    public string? AddMdNote { get; set; }
 
     /// <summary>
     /// 登录

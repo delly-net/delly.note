@@ -1,0 +1,57 @@
+﻿@page
+@using Delly.Note.Razor.Pages
+@model MdEditModel
+
+@{
+    Layout = null;
+    // 语言包
+    var lpm = Model.Lpm;
+    // 获取标题
+    var title = $"{ViewData["title"]?.ToString()} - {lpm.DellyNote}";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@title</title>
+    <link rel="icon" href="~/delly_256.ico" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/edit.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/editormd.css" />
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/js/editormd.min.js"></script>
+</head>
+<body class="edit-body">
+    <!-- 头部 -->
+    <header class="edit-header">
+        <nav class="nav-container">
+            <div class="nav-left">
+                <!-- logo -->
+                <a href="/" class="logo-link"><img alt="@lpm.DellyNote" title="@lpm.DellyNote" src="~/image/delly1_256.png" /></a>
+                <h1>@lpm.DellyNote</h1>
+            </div>
+            <div class="nav-right">
+                <a href="/MdEdit" class="primary">+ @lpm.AddMdNote</a>
+                <a href="/Login" class="success">@lpm.Login</a>
+            </div>
+        </nav>
+    </header>
+    <div class="edit-container">
+        <div id="editormd"></div>
+    </div>
+    <script type="text/javascript">
+        const md="";
+        const args={
+            width: "100%",
+            height: "100%",
+            syncScrolling : "single",
+            path    : "../lib/"
+        };
+        $(function(){
+            const editor = editormd("editormd", args);
+        });
+    </script>
+</body>
+</html>
