@@ -3,6 +3,7 @@ using Jip.WebApi.Service;
 using Nuo.Ioc.Modular;
 using Nuo.Ioc.Modular.Attribute;
 
+[assembly:Module("delly")]
 namespace Delly.Note.App;
 
 /// <summary>

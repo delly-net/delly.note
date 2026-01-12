@@ -1,0 +1,115 @@
+﻿/* 页面标题 */
+.page-title {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    /*justify-content: center;*/
+    /*text-align: center;*/
+    border-bottom: 1px solid var(--split);
+    font-size: 1.2rem;
+    color: var(--dark-text);
+}
+
+.page-title s {
+    display: block;
+    width: 0.5rem;
+    height: 1.8rem;
+    background: var(--primary-color);
+}
+
+.page-title span {
+    margin: 0 0.8rem;
+}
+
+.page-title a {
+    margin: 0 0.8rem;
+    text-decoration: none;
+    color: var(--dark-text);
+}
+
+.page-title i {
+    color: var(--split);
+}
+
+
+/* 产品展示区 */
+.note-section {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.note-section .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.note-section .note {
+    width: 100%;
+    background: var(--light-bg);
+    border-radius: 6px;
+    min-height: 140px;
+    padding: 0.5rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.note-section .note h1 {
+    padding: 0;
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--dark-text);
+}
+
+.note-section .note span {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: normal;
+    font-style: italic;
+    color: var(--dark-text-weak);
+}
+
+/* 分页 */
+.paged{
+    padding: 1rem;
+    text-align: center;
+}
+
+.paged a {
+    text-decoration: none;
+    color: var(--dark-text);
+    margin: 0 1rem;
+}
+
+.paged span {
+    color: var(--text);
+    margin: 0 1rem;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    /* 主视觉区 */
+    .hero-section{
+        display: none;
+    }
+    /* 产品格 */
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}

@@ -1,5 +1,4 @@
-﻿using Delly.Note.Common.Document.Entity;
-using Delly.Note.Razor.Extension;
+﻿using Delly.Note.Razor.Extension;
 using Delly.Note.Razor.Localization;
 using Delly.Note.Razor.Model;
 using Jip.Kernel.Common.General.UnitOfWork;
@@ -38,7 +37,7 @@ public class MdEditModel : BaseGenericPageModel
     /// <summary>
     /// 文章信息
     /// </summary>
-    public MarkdownNote? Note { get; set; }
+    public Delly.Note.Common.Kernel.Document.Entity.Note? Note { get; set; }
 
     /// <summary>
     /// 异步 Get

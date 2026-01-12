@@ -10,4 +10,4 @@
     <span>@Model.Note.Title</span>
 </section>
 <!-- 页面内容 -->
-<section class="page-content">@Html.Raw(Model.Note.Content)</section>
+<section class="page-content">@Html.Raw(Model.Note.RenderHtml)</section>

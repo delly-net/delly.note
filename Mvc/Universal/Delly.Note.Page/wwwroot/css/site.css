@@ -17,6 +17,10 @@
     --button-primary-bg-hover: #1d5c93;
 }
 
+html {
+    height: 100%;
+}
+
 html,
 body {
     margin: 0;
@@ -25,7 +29,6 @@ body {
     color: var(--primary-color);
     background: var(--dark-bg);
     width: 100%;
-    height: 100%;
 }
 
 * {

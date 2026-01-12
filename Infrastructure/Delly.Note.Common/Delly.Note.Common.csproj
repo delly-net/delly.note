@@ -14,8 +14,4 @@
 	  <PackageReference Include="Jip.WebApi.App" Version="3.2.67" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Document\Dto\" />
-	</ItemGroup>
-
 </Project>

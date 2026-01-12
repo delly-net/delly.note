@@ -1,4 +1,4 @@
-using Delly.Note.Common.Document.Vo;
+using Delly.Note.Common.Kernel.Document.Note.Vo;
 using Delly.Note.Razor.Extension;
 using Delly.Note.Razor.Localization;
 using Delly.Note.Razor.Model;
@@ -38,7 +38,7 @@ public class ListModel : BaseGenericPageModel
     /// <summary>
     /// 最新产品信息
     /// </summary>
-    public PagedVo<MarkdownNoteQueryVo> NotePaged { get; set; } = new();
+    public PagedVo<NoteQueryVo> NotePaged { get; set; } = new();
 
     /// <summary>
     /// 关键字
@@ -53,7 +53,7 @@ public class ListModel : BaseGenericPageModel
     {
         //using var uow = _uowCommonCore.Begin();
         // 附加样式
-        this.AppendCss("css/product.css");
+        this.AppendCss("css/list.css");
         //// 处理模板数据
         //await base.HandleTemplateData(_siteDefineDataCore, _sitePageDataCore, _topicDefineDataCore,
         //    _categoryDefineDataCore, _articleInfoDataCore);
@@ -62,7 +62,7 @@ public class ListModel : BaseGenericPageModel
         this.SetLanguagePack(lpm);
         Lpm = lpm;
         // 设置标题
-        this.SetTitle(lpm.Home);
+        this.SetTitle($"{lpm.AllNotes} - {lpm.DellyNote}");
         // 设置标志
         this.SetFlag(nameof(ListModel));
         // 获取页码
@@ -77,7 +77,7 @@ public class ListModel : BaseGenericPageModel
     }
 
     // 获取最新产品
-    private async Task<PagedVo<MarkdownNoteQueryVo>> GetNotePage(string key, int page)
+    private async Task<PagedVo<NoteQueryVo>> GetNotePage(string key, int page)
     {
         //var query = from ai in _articleInfoDataCore.Query()
         //        .WhereIf(!key.IsNullOrWhiteSpace(), d => d.Title.Contains(key))
@@ -103,7 +103,7 @@ public class ListModel : BaseGenericPageModel
             Page = page,
             PageSize = 10
         };
-        var pagedVo = new PagedVo<MarkdownNoteQueryVo>(paged);
+        var pagedVo = new PagedVo<NoteQueryVo>(paged);
         //paged.UpdateRowCountAndPageTotal(rowCount);
         //paged.Rows = await query.Paged(pagedDto.Page, pagedDto.PageSize)
         //    .ToListAsync();
