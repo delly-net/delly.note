@@ -72,6 +72,22 @@
     border-radius: 3px;
 }
 
+/* 编辑标题栏 */
+.edit-title {
+    display: block;;
+}
+
+.edit-title input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0 0.5rem;
+    line-height: 2.6rem;
+}
+
+/* 编辑内容区 */
 .edit-container {
     flex: 1;
 }

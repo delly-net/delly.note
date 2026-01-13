@@ -23,7 +23,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jip.WebApi.Kernel.App.Authorize;
+namespace Delly.Note.App.General.Authorize;
 
 /// <summary>
 /// 账户

@@ -11,9 +11,12 @@ using Nuo.Ioc.Kernel.Attribute;
 using Nuo.Ioc.Kernel.Extension;
 using Nuo.Ioc.Kernel.Profile;
 using Nuo.Ioc.Modular.Attribute;
+using Nuo.Jwt.Configure;
 using Nuo.Platform.Data.Extension;
 using Nuo.Platform.Logger.Extension;
 using Nuo.Security.License.Configure;
+using Nuo.WebApi.Jwt.Data;
+using Nuo.WebApi.Jwt.Extension;
 
 namespace Delly.Note.Startup.Ioc;
 
@@ -55,5 +58,13 @@ public sealed class DellyNoteStartupIocProfile : BaseIocProfile
         Console.WriteLine("Apply Model.json ...");
         var modelingConfig = OpenModelConfigureUtils.GetModelConfig(iocContainer, openServiceConfig, "Model.json").GetAwaiter().GetResult();
         iocContainer.AddSingleton(modelingConfig);
+        // 注册Jwt
+        Console.WriteLine("Apply Jwt ...");
+        var jwtConfig = GenericConfigureHelper.ReadGenericConfig<JwtConfig>("Jwt.json");
+        iocContainer.AddJwt<WebApiJwtData>(jwtConfig);
+        // 读取许可证配置
+        Console.WriteLine("Apply Licenses.json ...");
+        var multiLicenseConfig = GenericConfigureHelper.ReadGenericConfig<MultiLicenseConfig>("Licenses.json");
+        iocContainer.AddSingleton(multiLicenseConfig);
     }
 }

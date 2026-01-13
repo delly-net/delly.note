@@ -42,60 +42,18 @@ public sealed class MvcLpm : BaseLanguageModulePack
     public string? AddMdNote { get; set; }
 
     /// <summary>
+    /// 保存
+    /// </summary>
+    [NotNull]
+    [Initial("保存")]
+    public string? Save { get; set; }
+
+    /// <summary>
     /// 登录
     /// </summary>
     [NotNull]
     [Initial("登录")]
     public string? Login { get; set; }
-
-    /// <summary>
-    /// 注销
-    /// </summary>
-    [NotNull]
-    [Initial("注销")]
-    public string? Logout { get; set; }
-
-    /// <summary>
-    /// 所有产品
-    /// </summary>
-    [NotNull]
-    [Initial("所有产品")]
-    public string? Products { get; set; }
-    
-    /// <summary>
-    /// 关于
-    /// </summary>
-    [NotNull]
-    [Initial("关于")]
-    public string? About { get; set; }
-    
-    /// <summary>
-    /// 联系我们
-    /// </summary>
-    [NotNull]
-    [Initial("联系我们")]
-    public string? ContactUs { get; set; }
-    
-    /// <summary>
-    /// 快速访问
-    /// </summary>
-    [NotNull]
-    [Initial("快速访问")]
-    public string? QuickLink { get; set; }
-    
-    /// <summary>
-    /// 关注我们
-    /// </summary>
-    [NotNull]
-    [Initial("关注我们")]
-    public string? FollowUs { get; set; }
-    
-    /// <summary>
-    /// 搜索产品
-    /// </summary>
-    [NotNull]
-    [Initial("搜索产品")]
-    public string? SearchProduct { get; set; }
 
     /// <summary>
     /// 让笔记更简单
@@ -105,67 +63,11 @@ public sealed class MvcLpm : BaseLanguageModulePack
     public string? Slogan { get; set; }
     
     /// <summary>
-    /// 副标语
-    /// </summary>
-    [NotNull]
-    [Initial("副标语")]
-    public string? SubSlogan { get; set; }
-    
-    /// <summary>
-    /// 选择产品
-    /// </summary>
-    [NotNull]
-    [Initial("选择产品")]
-    public string? SelectProduct { get; set; }
-    
-    /// <summary>
-    /// OEM
-    /// </summary>
-    [NotNull]
-    [Initial("OEM")]
-    public string? Oem { get; set; }
-    
-    /// <summary>
-    /// 可定制
-    /// </summary>
-    [NotNull]
-    [Initial("可定制")]
-    public string? Customized { get; set; }
-    
-    /// <summary>
-    /// 质量保证
-    /// </summary>
-    [NotNull]
-    [Initial("质量保证")]
-    public string? QualityAssurance { get; set; }
-    
-    /// <summary>
     /// 获取报价
     /// </summary>
     [NotNull]
     [Initial("获取报价")]
     public string? Quotation { get; set; }
-    
-    /// <summary>
-    /// 地址
-    /// </summary>
-    [NotNull]
-    [Initial("地址")]
-    public string? Address { get; set; }
-    
-    /// <summary>
-    /// 电话
-    /// </summary>
-    [NotNull]
-    [Initial("电话")]
-    public string? Phone { get; set; }
-    
-    /// <summary>
-    /// 邮箱
-    /// </summary>
-    [NotNull]
-    [Initial("邮箱")]
-    public string? Email { get; set; }
     
     /// <summary>
     /// 获取报价提示
@@ -181,6 +83,13 @@ public sealed class MvcLpm : BaseLanguageModulePack
     [Initial("确定")]
     public string? Confirm { get; set; }
 
+    /// <summary>
+    /// 请输入标题
+    /// </summary>
+    [NotNull]
+    [Initial("请输入标题")]
+    public string? PleaseInputTitle { get; set; }
+
     #endregion
-    
+
 }

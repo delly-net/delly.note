@@ -13,7 +13,7 @@ namespace Delly.Note.App.Kernel.Document;
 /// <summary>
 /// 笔记
 /// </summary>
-[JwtAuthorize]
+//[JwtAuthorize]
 public sealed class NoteApp(
     NoteCore noteCore,
     MapCommonCore mapCommonCore,

@@ -44,4 +44,15 @@ public sealed class DataInitializeApp(
         await _dataInitializeCore.SetupDatabase<JipTableAttribute>();
     }
 
+    /// <summary>
+    /// 安装根账户
+    /// </summary>
+    /// <returns></returns>
+    public async Task SetupRoot(DataInitializeDto dto)
+    {
+        await _dataInitializeCore.VerifySetupPassword(dto.Password);
+        var success = await _dataInitializeCore.SetupRoot();
+        if (!success) { throw _exceptionCommonCore.UserFriendly(Lpm.RootNoInitializationAvailable); }
+    }
+
 }
