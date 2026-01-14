@@ -60,7 +60,7 @@
             $("#lnkSave").bind('click', function(){
                 ctx.save({
                   title: $("#txtTitle").val(),
-                  noteType: "MARKDOWN",
+                  noteType: "MD",
                   editContent: editor.getMarkdown(),
                   renderHtml: editor.getHTML(),
                 });

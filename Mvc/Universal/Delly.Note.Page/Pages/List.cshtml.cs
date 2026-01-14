@@ -1,34 +1,32 @@
+using Delly.Note.Common.Kernel.Document;
+using Delly.Note.Common.Kernel.Document.Note.Dto;
 using Delly.Note.Common.Kernel.Document.Note.Vo;
 using Delly.Note.Razor.Extension;
 using Delly.Note.Razor.Localization;
 using Delly.Note.Razor.Model;
+using Jip.Common.Data.Extension;
 using Jip.Define.Data.Vo;
 using Jip.Kernel.Common.General.UnitOfWork;
+using Nuo.Data.General.Extension;
+using Nuo.Extension;
 
 namespace Delly.Note.Razor.Pages;
 
 /// <summary>
 /// 列表
 /// </summary>
-public class ListModel : BaseGenericPageModel
+public class ListModel(
+    ILogger<ListModel> logger,
+    NoteDataCore noteDataCore,
+    UowCommonCore uowCommonCore,
+    LpmCommonCore lpmCommonCore
+    ) : BaseGenericPageModel
 {
-    private readonly ILogger<ListModel> _logger;
-    private readonly UowCommonCore _uowCommonCore;
-    private readonly LpmCommonCore _lpmCommonCore;
 
-    /// <summary>
-    /// 列表
-    /// </summary>
-    public ListModel(
-        ILogger<ListModel> logger,
-        UowCommonCore uowCommonCore,
-        LpmCommonCore lpmCommonCore
-    )
-    {
-        _logger = logger;
-        _uowCommonCore = uowCommonCore;
-        _lpmCommonCore = lpmCommonCore;
-    }
+    private readonly ILogger<ListModel> _logger = logger;
+    private readonly NoteDataCore _noteDataCore = noteDataCore;
+    private readonly UowCommonCore _uowCommonCore = uowCommonCore;
+    private readonly LpmCommonCore _lpmCommonCore = lpmCommonCore;
 
     /// <summary>
     /// 语言包模块
@@ -51,7 +49,7 @@ public class ListModel : BaseGenericPageModel
     /// <returns></returns>
     public async Task OnGetAsync()
     {
-        //using var uow = _uowCommonCore.Begin();
+        using var uow = _uowCommonCore.Begin();
         // 附加样式
         this.AppendCss("css/list.css");
         //// 处理模板数据
@@ -79,34 +77,30 @@ public class ListModel : BaseGenericPageModel
     // 获取最新产品
     private async Task<PagedVo<NoteQueryVo>> GetNotePage(string key, int page)
     {
-        //var query = from ai in _articleInfoDataCore.Query()
-        //        .WhereIf(!key.IsNullOrWhiteSpace(), d => d.Title.Contains(key))
-        //    join cd in _categoryDefineDataCore.Query() on ai.CategoryId equals cd.Id
-        //    join td in _topicDefineDataCore.Query() on cd.TopicId equals td.Id
-        //    where td.SiteId == Site.Id
-        //          && td.Code == "PRODUCTS"
-        //    orderby ai.LastModificationTime descending
-        //    select new ArticleViewDto
-        //    {
-        //        Id = ai.Id,
-        //        Title = ai.Title,
-        //        Image = ai.Image,
-        //        Summary = ai.Summary,
-        //        CategoryId = ai.CategoryId,
-        //        CategoryName = cd.Name,
-        //    };
-        //// 获取总行数
-        //var rowCount = await query.CountAsync();
+        var query = from n in _noteDataCore.Query()
+                .WhereIf(!key.IsNullOrWhiteSpace(), d => d.Title.Contains(key))
+                    select new NoteQueryVo
+                    {
+                        Id = n.Id,
+                        Title = n.Title,
+                        NoteType = n.NoteType,
+                        CreationTime = n.CreationTime,
+                        CreationUserId = n.CreationUserId,
+                        CreationUserName = n.CreationUserName,
+                        LastModificationTime = n.LastModificationTime,
+                        LastModificationUserId = n.LastModificationUserId,
+                        LastModificationUserName = n.LastModificationUserName,
+                    };
+        // 获取总行数
+        var rowCount = await query.CountAsync();
         // 执行分页查询并返回
-        var paged = new PagedVo()
+        var pagedDto = new NotePagedDto()
         {
             Page = page,
-            PageSize = 10
+            PageSize = 12
         };
-        var pagedVo = new PagedVo<NoteQueryVo>(paged);
-        //paged.UpdateRowCountAndPageTotal(rowCount);
-        //paged.Rows = await query.Paged(pagedDto.Page, pagedDto.PageSize)
-        //    .ToListAsync();
+        var pagedVo = new PagedVo<NoteQueryVo>(pagedDto, rowCount);
+        pagedVo.Rows = await query.OrderByDescending(d=>d.LastModificationTime).Paged(pagedDto.Page, pagedDto.PageSize).ToListAsync();
         return pagedVo;
     }
 }
