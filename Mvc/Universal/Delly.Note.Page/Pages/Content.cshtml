@@ -2,12 +2,51 @@
 @using Delly.Note.Razor.Pages
 @model ContentModel
 
-<!-- 页面标题 -->
-<section class="page-title">
-    <s></s>
-    <a href="/?lang=@Model.Language">@Model.Lpm.Home</a>
-    <i>/</i>
-    <span>@Model.Note.Title</span>
-</section>
-<!-- 页面内容 -->
-<section class="page-content">@Html.Raw(Model.Note.RenderHtml)</section>
+@{
+    Layout = null;
+    // 语言包
+    var lpm = Model.Lpm;
+    // 获取标题
+    var title = $"{ViewData["title"]?.ToString()} - {lpm.DellyNote}";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@title</title>
+    <link rel="icon" href="~/delly_256.ico" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/content.css" asp-append-version="true" />
+</head>
+<body class="content-body">
+    <!-- 头部 -->
+    <header class="content-header">
+        <nav class="nav-container">
+            <div class="nav-left">
+                <!-- logo -->
+                <a href="/" class="logo-link"><img alt="@lpm.DellyNote" title="@lpm.DellyNote" src="~/image/delly1_256.png" /></a>
+                <h1>@lpm.DellyNote</h1>
+            </div>
+            <div class="nav-right">
+                <a href="/MdEdit?id=@Model.Note?.Id" class="primary">@lpm.Edit</a>
+                <a href="/Login" class="success">@lpm.Login</a>
+            </div>
+        </nav>
+    </header>
+    <section class="content-title" style="border-left: 6px solid #7ab968;">
+        <h1>@Model.Note?.Title</h1>
+        <span>于 @Model.Note?.CreationTime.ToString("yyyy-MM-dd HH:mm") 创建, @Model.Note?.LastModificationTime.ToString("yyyy-MM-dd HH:mm") 最后更新</span>
+    </section>
+    <section class="content-container">
+        <div id="catalog" class="catalog">
+            <h1>目录</h1>
+            <ul>
+                <li>无</li>
+            </ul>
+        </div>
+        <div id="content" class="html">@Html.Raw(Model.Note?.RenderHtml)</div>
+    </section>
+</body>
+</html>

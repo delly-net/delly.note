@@ -2,8 +2,12 @@
 @using Delly.Note.Razor.Localization
 @using Nuo.Extension
 @{
+    // 随机数
+    var random = new Random();
     // 获取页面样式
     var pageCss = (List<string>?)ViewData["css"] ?? [];
+    // 获取页面脚本
+    var pageJs = (List<string>?)ViewData["js"] ?? [];
     // 获取语言
     var language = (string?)ViewData["lang"] ?? "en";
     // 获取站点信息
@@ -33,6 +37,10 @@
     @foreach (var css in pageCss)
     {
         <link rel="stylesheet" href="@css" />
+    }
+    @foreach (var js in pageJs)
+    {
+        <script src="@(js)?r=@(random.NextDouble())"></script>
     }
 </head>
 <body>
@@ -88,7 +96,7 @@
         </div>
     </section>
 
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    @* <script src="~/js/site.js" asp-append-version="true"></script> *@
 
     @await RenderSectionAsync("Scripts", required: false)
 

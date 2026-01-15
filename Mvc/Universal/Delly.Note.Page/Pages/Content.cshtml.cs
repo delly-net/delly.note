@@ -1,32 +1,26 @@
-﻿using Delly.Note.Razor.Extension;
+﻿using Delly.Note.Common.Kernel.Document;
+using Delly.Note.Razor.Extension;
 using Delly.Note.Razor.Localization;
 using Delly.Note.Razor.Model;
 using Jip.Kernel.Common.General.UnitOfWork;
+using Nuo.Extension;
 
 namespace Delly.Note.Razor.Pages;
 
 /// <summary>
 /// 内容页
 /// </summary>
-public class ContentModel : BaseGenericPageModel
+public class ContentModel(
+    ILogger<IndexModel> logger,
+    NoteDataCore noteDataCore,
+    UowCommonCore uowCommonCore,
+    LpmCommonCore lpmCommonCore
+    ) : BaseGenericPageModel
 {
-    private readonly ILogger<IndexModel> _logger;
-    private readonly UowCommonCore _uowCommonCore;
-    private readonly LpmCommonCore _lpmCommonCore;
-
-    /// <summary>
-    /// 内容页
-    /// </summary>
-    public ContentModel(
-        ILogger<IndexModel> logger,
-        UowCommonCore uowCommonCore,
-        LpmCommonCore lpmCommonCore
-    )
-    {
-        _logger = logger;
-        _uowCommonCore = uowCommonCore;
-        _lpmCommonCore = lpmCommonCore;
-    }
+    private readonly ILogger<IndexModel> _logger = logger;
+    private readonly NoteDataCore _noteDataCore = noteDataCore;
+    private readonly UowCommonCore _uowCommonCore = uowCommonCore;
+    private readonly LpmCommonCore _lpmCommonCore = lpmCommonCore;
 
     /// <summary>
     /// 语言包模块
@@ -36,7 +30,7 @@ public class ContentModel : BaseGenericPageModel
     /// <summary>
     /// 文章信息
     /// </summary>
-    public Common.Kernel.Document.Entity.Note Note { get; set; } = new();
+    public Common.Kernel.Document.Entity.Note? Note { get; set; }
 
     /// <summary>
     /// 异步 Get
@@ -45,8 +39,8 @@ public class ContentModel : BaseGenericPageModel
     public async Task OnGetAsync()
     {
         using var uow = _uowCommonCore.Begin();
-        // 附加样式
-        this.AppendCss("css/content-page.css");
+        //// 附加样式
+        //this.AppendCss("css/content-page.css");
         //// 处理模板数据
         //var site = await base.HandleTemplateData(_siteDefineDataCore, _sitePageDataCore, _topicDefineDataCore,
         //    _categoryDefineDataCore, _articleInfoDataCore);
@@ -58,7 +52,7 @@ public class ContentModel : BaseGenericPageModel
         var noteId = Request.Query["id"].ToString();
         await LoadNote(noteId);
         // 设置标题
-        this.SetTitle(Note.Title);
+        this.SetTitle(Note?.Title ?? string.Empty);
     }
 
     /// <summary>
@@ -66,29 +60,7 @@ public class ContentModel : BaseGenericPageModel
     /// </summary>
     private async Task LoadNote(string noteId)
     {
-        //// 获取文章信息
-        //var query = from ai in _articleInfoDataCore.Query()
-        //    join cd in _categoryDefineDataCore.Query() on ai.CategoryId equals cd.Id
-        //    join td in _topicDefineDataCore.Query() on cd.TopicId equals td.Id
-        //    where ai.Title == articleCode
-        //          && cd.Code == "PAGE"
-        //          && td.Code == "PAGE"
-        //          && td.SiteId == site.Id
-        //    select ai;
-        //var sqlSet = query.ToSqlSet();
-        //var articleInfo = await query.FirstOrDefaultAsync();
-        //if (articleInfo is null)
-        //{
-        //    return;
-        //}
-        //ArticleInfo = articleInfo;
-        //// 获取超文本信息
-        //var htmlInfo = await _htmlInfoDataCore.Query(d => d.TargetType == "ACTICLE" && d.TargetId == articleInfo.Id)
-        //    .FirstOrDefaultAsync();
-        //if (htmlInfo is null)
-        //{
-        //    return;
-        //}
-        //HtmlInfo = htmlInfo;
+        if (noteId.IsNullOrWhiteSpace()) { return; }
+        Note = await _noteDataCore.GetEntityAsync(noteId);
     }
 }

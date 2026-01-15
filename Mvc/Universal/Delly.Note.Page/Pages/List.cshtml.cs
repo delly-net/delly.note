@@ -52,6 +52,8 @@ public class ListModel(
         using var uow = _uowCommonCore.Begin();
         // 附加样式
         this.AppendCss("css/list.css");
+        // 附加脚本
+        this.AppendJs("js/list.js");
         //// 处理模板数据
         //await base.HandleTemplateData(_siteDefineDataCore, _sitePageDataCore, _topicDefineDataCore,
         //    _categoryDefineDataCore, _articleInfoDataCore);

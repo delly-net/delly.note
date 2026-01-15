@@ -1,33 +1,27 @@
-﻿using Delly.Note.Razor.Extension;
+﻿using Delly.Note.Common.Kernel.Document;
+using Delly.Note.Razor.Extension;
 using Delly.Note.Razor.Localization;
 using Delly.Note.Razor.Model;
 using Jip.Kernel.Common.General.UnitOfWork;
 using Nuo.Data.Expression.Query.Extension;
+using Nuo.Extension;
 
 namespace Delly.Note.Razor.Pages;
 
 /// <summary>
 /// 编辑页
 /// </summary>
-public class MdEditModel : BaseGenericPageModel
+public class MdEditModel(
+    ILogger<MdEditModel> logger,
+    NoteDataCore noteDataCore,
+    UowCommonCore uowCommonCore,
+    LpmCommonCore lpmCommonCore
+    ) : BaseGenericPageModel
 {
-    private readonly ILogger<MdEditModel> _logger;
-    private readonly UowCommonCore _uowCommonCore;
-    private readonly LpmCommonCore _lpmCommonCore;
-
-    /// <summary>
-    /// 内容页
-    /// </summary>
-    public MdEditModel(
-        ILogger<MdEditModel> logger,
-        UowCommonCore uowCommonCore,
-        LpmCommonCore lpmCommonCore
-    )
-    {
-        _logger = logger;
-        _uowCommonCore = uowCommonCore;
-        _lpmCommonCore = lpmCommonCore;
-    }
+    private readonly ILogger<MdEditModel> _logger = logger;
+    private readonly NoteDataCore _noteDataCore = noteDataCore;
+    private readonly UowCommonCore _uowCommonCore = uowCommonCore;
+    private readonly LpmCommonCore _lpmCommonCore = lpmCommonCore;
 
     /// <summary>
     /// 语言包模块
@@ -46,8 +40,8 @@ public class MdEditModel : BaseGenericPageModel
     public async Task OnGetAsync()
     {
         using var uow = _uowCommonCore.Begin();
-        // 附加样式
-        this.AppendCss("css/product-content-page.css");
+        //// 附加样式
+        //this.AppendCss("css/product-content-page.css");
         // 处理模板数据
         //var site = await base.HandleTemplateData(_siteDefineDataCore, _sitePageDataCore, _topicDefineDataCore,
         //    _categoryDefineDataCore, _articleInfoDataCore);
@@ -67,6 +61,8 @@ public class MdEditModel : BaseGenericPageModel
     /// </summary>
     private async Task LoadNote(string noteId)
     {
+        if (noteId.IsNullOrWhiteSpace()) { return; }
+        Note = await _noteDataCore.GetEntityAsync(noteId);
         //// 获取文章信息
         //var query = from ai in _articleInfoDataCore.Query()
         //    join cd in _categoryDefineDataCore.Query() on ai.CategoryId equals cd.Id

@@ -15,12 +15,12 @@
                     <div class="tools">
                         <div class="right">
                             <a href="/MdEdit?id=@row.Id"><img src="/image/edit.svg" alt="" /></a>
-                            <a href="javascript:;"><img src="/image/delete.svg" alt="" /></a>
+                            <a href="javascript:;" onclick="ctx.delete(`@row.Id`,`@row.Title`);"><img src="/image/delete.svg" alt="" /></a>
                         </div>
                     </div>
                     <h1><a href="/Content?id=@row.Id" target="_blank">@row.Title</a></h1>
                     <span>于 @row.LastModificationTime.ToString("yyyy-MM-dd HH:mm") 最后更新</span>
-                    <span>于 @row.CreationTime.ToString("yyyy-MM-dd HH:mm")前 创建</span>
+                    <span>于 @row.CreationTime.ToString("yyyy-MM-dd HH:mm") 创建</span>
                 </div>
             }
         </div>

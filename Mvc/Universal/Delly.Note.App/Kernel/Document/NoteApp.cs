@@ -36,10 +36,11 @@ public sealed class NoteApp(
     /// </summary>
     /// <param name="dto"></param>
     /// <returns></returns>
-    public async Task Insert(NoteInsertDto dto)
+    public async Task<NoteVo> Insert(NoteInsertDto dto)
     {
         var data = _mapCommonCore.Map<Delly.Note.Common.Kernel.Document.Entity.Note>(dto);
         await _noteCore.Insert(data);
+        return _mapCommonCore.Map<NoteVo>(data);
     }
 
     /// <summary>

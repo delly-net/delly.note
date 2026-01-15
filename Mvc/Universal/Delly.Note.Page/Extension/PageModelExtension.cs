@@ -22,10 +22,25 @@ public static class PageModelExtension
             pageCss = new List<string>();
             page.ViewData["css"] = pageCss;
         }
-
         pageCss.Add(path);
     }
-    
+
+    /// <summary>
+    /// 添加脚本文件
+    /// </summary>
+    /// <param name="page"></param>
+    /// <param name="path"></param>
+    public static void AppendJs(this PageModel page, string path)
+    {
+        var pageJs = (List<string>?)page.ViewData["js"];
+        if (pageJs is null)
+        {
+            pageJs = new List<string>();
+            page.ViewData["js"] = pageJs;
+        }
+        pageJs.Add(path);
+    }
+
     /// <summary>
     /// 设置页面标题
     /// </summary>

@@ -49,6 +49,13 @@ public sealed class MvcLpm : BaseLanguageModulePack
     public string? Save { get; set; }
 
     /// <summary>
+    /// 编辑
+    /// </summary>
+    [NotNull]
+    [Initial("编辑")]
+    public string? Edit { get; set; }
+
+    /// <summary>
     /// 登录
     /// </summary>
     [NotNull]
