@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Nuo.Ioc.Modular.Extension;
 using Jip.WebApi.Service.Startup;
 
-namespace Delly.Note.Startup;
+namespace DellyNote.Startup;
 
 /// <summary>
 /// Yetmee Mvc 启动器

@@ -1,16 +1,16 @@
-using Delly.Note.Common.Kernel.Document;
-using Delly.Note.Common.Kernel.Document.Note.Dto;
-using Delly.Note.Common.Kernel.Document.Note.Vo;
-using Delly.Note.Razor.Extension;
-using Delly.Note.Razor.Localization;
-using Delly.Note.Razor.Model;
+using DellyNote.Common.Kernel.Document;
+using DellyNote.Common.Kernel.Document.Note.Dto;
+using DellyNote.Common.Kernel.Document.Note.Vo;
+using DellyNote.Razor.Extension;
+using DellyNote.Razor.Localization;
+using DellyNote.Razor.Model;
 using Jip.Common.Data.Extension;
 using Jip.Define.Data.Vo;
 using Jip.Kernel.Common.General.UnitOfWork;
 using Nuo.Data.General.Extension;
 using Nuo.Extension;
 
-namespace Delly.Note.Razor.Pages;
+namespace DellyNote.Razor.Pages;
 
 /// <summary>
 /// 列表

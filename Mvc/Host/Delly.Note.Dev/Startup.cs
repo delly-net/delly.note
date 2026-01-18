@@ -1,10 +1,10 @@
-﻿using Delly.Note.Startup;
+﻿using DellyNote.Startup;
 using Microsoft.AspNetCore.Builder;
 using Nuo.Data.Sqlite;
 using Nuo.Ioc;
 using Nuo.Ioc.Modular.Extension;
 
-namespace Delly.Note.Dev;
+namespace DellyNote.Dev;
 
 /// <summary>
 /// 通用启动

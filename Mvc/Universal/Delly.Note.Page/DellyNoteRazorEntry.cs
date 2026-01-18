@@ -1,8 +1,8 @@
-﻿using Delly.Note.Common;
+﻿using DellyNote.Common;
 using Nuo.Ioc.Modular;
 using Nuo.Ioc.Modular.Attribute;
 
-namespace Delly.Note.Razor;
+namespace DellyNote.Razor;
 
 /// <summary>
 /// Razor页 模块入口

@@ -14,11 +14,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Universal\Delly.Note.Page\Delly.Note.Razor.csproj">
+		<ProjectReference Include="..\..\Universal\Delly.Note.Page\DellyNote.Razor.csproj">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</ProjectReference>
-		<ProjectReference Include="..\..\Universal\Delly.Note.Startup\Delly.Note.Startup.csproj" />
+		<ProjectReference Include="..\..\Universal\Delly.Note.Startup\DellyNote.Startup.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

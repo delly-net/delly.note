@@ -1,8 +1,8 @@
 using Nuo.Hosting.Application.Extension;
 using Jip.Common.Host;
 using Microsoft.AspNetCore.Builder;
-using Delly.Note.Startup;
-using Delly.Note.Dev;
+using DellyNote.Startup;
+using DellyNote.Dev;
 
 // 初始化
 HostUtils.Initialize(false);

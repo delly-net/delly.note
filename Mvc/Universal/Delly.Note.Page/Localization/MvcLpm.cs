@@ -3,7 +3,7 @@ using Nuo.Localization.Modular;
 using Nuo.Localization.Modular.Attribute;
 using Nuo.Ref.Attribute;
 
-namespace Delly.Note.Razor.Localization;
+namespace DellyNote.Razor.Localization;
 
 /// <summary>
 /// 内核

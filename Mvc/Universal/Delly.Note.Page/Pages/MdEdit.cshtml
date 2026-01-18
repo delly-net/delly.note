@@ -1,5 +1,5 @@
 ﻿@page
-@using Delly.Note.Razor.Pages
+@using DellyNote.Razor.Pages
 @model MdEditModel
 
 @{
@@ -56,7 +56,56 @@
             markdown : md,
             saveHTMLToTextarea : true,
             codeFold : true,
+            imageUpload : true,
+            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "/app/delly/FileStorage/Upload",
+            onload: function () {
+                // console.log("editormd.onload",this);
+                var cm = this.codeMirror; // CodeMirror 实例
+                var editor = this;
+
+                // 监听粘贴事件
+                cm.on("paste", function (evt, e) {
+                    // console.log("editormd.paste",evt,e,window.clipboardData);
+                    var items = (evt.originalEvent.clipboardData || e?.clipboardData || window.clipboardData).items;
+                    for (var i = 0; i < items.length; i++) {
+                        if (items[i].kind === "file" && items[i].type.indexOf("image/") !== -1) {
+                            var file = items[i].getAsFile();
+                            if (file) {
+                                uploadImg(file, editor); // 调用上传函数
+                                e?.preventDefault(); // 阻止默认粘贴行为
+                            }
+                        }
+                    }
+                });
+            }
         };
+
+        // 图片上传函数
+        function uploadImg(file, editor) {
+            var formData = new FormData();
+            formData.append("editormd-image-file", file); // 与后端参数名一致
+
+            fetch(editor.settings.imageUploadURL, {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    var imgUrl = data.url;
+                    // 插入 Markdown 图片语法
+                    editor.insertValue(`![${imgUrl}](${imgUrl})`);
+                } else {
+                    alert("上传失败: " + data.message);
+                }
+            })
+            .catch(err => {
+                console.error("上传错误:", err);
+                alert("上传失败，请重试");
+            });
+        }
+
         $(function(){
             const editor = editormd("editormd", args);
             $("#lnkSave").bind('click', function(){

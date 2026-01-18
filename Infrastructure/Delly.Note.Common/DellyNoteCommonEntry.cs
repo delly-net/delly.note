@@ -4,7 +4,7 @@ using Jip.WebApi.App;
 using Nuo.Ioc.Modular;
 using Nuo.Ioc.Modular.Attribute;
 
-namespace Delly.Note.Common;
+namespace DellyNote.Common;
 
 /// <summary>
 /// Yetmee通用 模块入口

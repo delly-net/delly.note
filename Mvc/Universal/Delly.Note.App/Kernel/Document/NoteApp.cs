@@ -1,5 +1,5 @@
-﻿using Delly.Note.Common.Kernel.Document.Note.Dto;
-using Delly.Note.Common.Kernel.Document.Note.Vo;
+﻿using DellyNote.Common.Kernel.Document.Note.Dto;
+using DellyNote.Common.Kernel.Document.Note.Vo;
 using Jip.Define.Data.Vo;
 using Jip.Kernel.Common.General.Exception;
 using Jip.Kernel.Common.General.ObjectMap;
@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Nuo.Extension;
 using Nuo.WebApi.Jwt.Attribute;
 
-namespace Delly.Note.App.Kernel.Document;
+namespace DellyNote.App.Kernel.Document;
 
 /// <summary>
 /// 笔记
@@ -38,7 +38,7 @@ public sealed class NoteApp(
     /// <returns></returns>
     public async Task<NoteVo> Insert(NoteInsertDto dto)
     {
-        var data = _mapCommonCore.Map<Delly.Note.Common.Kernel.Document.Entity.Note>(dto);
+        var data = _mapCommonCore.Map<DellyNote.Common.Kernel.Document.Entity.Note>(dto);
         await _noteCore.Insert(data);
         return _mapCommonCore.Map<NoteVo>(data);
     }
@@ -50,7 +50,7 @@ public sealed class NoteApp(
     /// <returns></returns>
     public async Task BatchInsert(List<NoteInsertDto> dto)
     {
-        var data = _mapCommonCore.MapList<Delly.Note.Common.Kernel.Document.Entity.Note>(dto);
+        var data = _mapCommonCore.MapList<DellyNote.Common.Kernel.Document.Entity.Note>(dto);
         await _noteCore.InsertList(data);
     }
 

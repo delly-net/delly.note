@@ -1,4 +1,4 @@
-using Jip.Kernel.Common.General.Localization;
+using DellyNote.Common.General.Localization;
 using Jip.WebApi.App.AppService;
 
 namespace Jip.WebApi.Kernel.App.General;

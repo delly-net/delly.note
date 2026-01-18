@@ -1,5 +1,5 @@
-using Delly.Note.Linux;
-using Delly.Note.Startup;
+using DellyNote.Linux;
+using DellyNote.Startup;
 using Jip.Common.Host;
 using Microsoft.AspNetCore.Builder;
 using Nuo.Hosting.Application.Extension;

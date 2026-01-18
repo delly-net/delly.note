@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Delly.Note.Common.Kernel.Document.Note.Dto;
+namespace DellyNote.Common.Kernel.Document.Note.Dto;
 
 /// <summary>
 /// 笔记 查询输入

@@ -1,7 +1,7 @@
-using Delly.Note.Razor.Extension;
+using DellyNote.Razor.Extension;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Delly.Note.Razor.Model;
+namespace DellyNote.Razor.Model;
 
 /// <summary>
 /// 基础通用

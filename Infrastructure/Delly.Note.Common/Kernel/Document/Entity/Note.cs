@@ -1,5 +1,5 @@
-﻿using Delly.Note.Common.Kernel.Document.Note.Dto;
-using Delly.Note.Common.Kernel.Document.Note.Vo;
+﻿using DellyNote.Common.Kernel.Document.Note.Dto;
+using DellyNote.Common.Kernel.Document.Note.Vo;
 using Jip.Common.Data.Attribute;
 using Jip.Common.Data.Entity.GuidEntity;
 using Nuo.Data.General.Attribute;
@@ -9,7 +9,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Delly.Note.Common.Kernel.Document.Entity;
+namespace DellyNote.Common.Kernel.Document.Entity;
 
 /// <summary>
 /// 笔记

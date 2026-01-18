@@ -1,8 +1,8 @@
-﻿using Delly.Note.Razor.Localization;
+﻿using DellyNote.Razor.Localization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Nuo.Extension;
 
-namespace Delly.Note.Razor.Extension;
+namespace DellyNote.Razor.Extension;
 
 /// <summary>
 /// 页面扩展

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jip.Kernel.Common.General.Localization;
+namespace DellyNote.Common.General.Localization;
 
 /// <summary>
 /// 内核
@@ -115,6 +115,13 @@ public sealed class DellyNoteLpm : BaseLanguageModulePack
     [NotNull]
     [Initial("已经是最后一条")]
     public string? AlreadyLastSeq { get; set; }
+
+    /// <summary>
+    /// 未发现上传文件
+    /// </summary>
+    [NotNull]
+    [Initial("未发现上传文件")]
+    public string? UploadFileNotFound { get; set; }
 
     #endregion
 

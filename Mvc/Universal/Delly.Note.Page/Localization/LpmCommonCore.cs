@@ -3,7 +3,7 @@ using Nuo.Localization.Modular;
 using Nuo.Localization.Modular.Dependency;
 using Nuo.Localization.Modular.Extension;
 
-namespace Delly.Note.Razor.Localization;
+namespace DellyNote.Razor.Localization;
 
 /// <summary>
 /// 模块化语言包 通用核心

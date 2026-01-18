@@ -1,5 +1,5 @@
-﻿using Delly.Note.Sqlite.Docker;
-using Delly.Note.Startup;
+﻿using DellyNote.Sqlite.Docker;
+using DellyNote.Startup;
 using Jip.Common.Host;
 using Microsoft.AspNetCore.Builder;
 using Nuo.Hosting.Application.Extension;

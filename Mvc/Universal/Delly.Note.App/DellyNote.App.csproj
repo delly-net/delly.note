@@ -13,7 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Infrastructure\Delly.Note.Common\Delly.Note.Common.csproj" />
+		<ProjectReference Include="..\..\..\Infrastructure\Delly.Note.Common\DellyNote.Common.csproj" />
 	</ItemGroup>
 
 </Project>

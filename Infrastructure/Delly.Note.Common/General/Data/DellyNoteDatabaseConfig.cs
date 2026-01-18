@@ -5,7 +5,7 @@ using Nuo.Data.Configure;
 using Nuo.IO.Constant;
 using Nuo.Ref.Attribute;
 
-namespace Delly.Note.Common.General.Data;
+namespace DellyNote.Common.General.Data;
 
 /// <summary>
 /// 数据库配置

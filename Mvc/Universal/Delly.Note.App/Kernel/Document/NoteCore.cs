@@ -1,5 +1,5 @@
-﻿using Delly.Note.Common.Kernel.Document;
-using Delly.Note.Common.Kernel.Document.Note.Dto;
+﻿using DellyNote.Common.Kernel.Document;
+using DellyNote.Common.Kernel.Document.Note.Dto;
 using Jip.Common.Data.Extension;
 using Jip.Define.Data.Vo;
 using Jip.Kernel.Common.General.Exception;
@@ -8,7 +8,7 @@ using Nuo.Data.Expression.Delete.Extension;
 using Nuo.Data.General.Extension;
 using Nuo.Extension;
 
-namespace Delly.Note.App.Kernel.Document;
+namespace DellyNote.App.Kernel.Document;
 
 /// <summary>
 /// 笔记 服务核心
@@ -32,7 +32,7 @@ public sealed class NoteCore(
     /// </summary>
     /// <param name="data"></param>
     /// <returns></returns>
-    public async Task Insert(Delly.Note.Common.Kernel.Document.Entity.Note data)
+    public async Task Insert(DellyNote.Common.Kernel.Document.Entity.Note data)
     {
         await _noteDataCore.InsertAsync(data);
     }
@@ -42,7 +42,7 @@ public sealed class NoteCore(
     /// </summary>
     /// <param name="datas"></param>
     /// <returns></returns>
-    public async Task InsertList(List<Delly.Note.Common.Kernel.Document.Entity.Note> datas)
+    public async Task InsertList(List<DellyNote.Common.Kernel.Document.Entity.Note> datas)
     {
         await _noteDataCore.InsertListAsync(datas);
     }
@@ -80,7 +80,7 @@ public sealed class NoteCore(
     /// </summary>
     /// <param name="data"></param>
     /// <returns></returns>
-    public async Task Update(Delly.Note.Common.Kernel.Document.Entity.Note data)
+    public async Task Update(DellyNote.Common.Kernel.Document.Entity.Note data)
     {
         await _noteDataCore.UpdateAsync(data);
     }
@@ -93,7 +93,7 @@ public sealed class NoteCore(
     /// 获取 笔记
     /// </summary>
     /// <returns></returns>
-    public async Task<Delly.Note.Common.Kernel.Document.Entity.Note> GetDataById(string id)
+    public async Task<DellyNote.Common.Kernel.Document.Entity.Note> GetDataById(string id)
     {
         var data = await _noteDataCore.GetEntityAsync(id);
         return data ?? throw _exceptionCommonCore.NotAvailable("ID", id);
@@ -103,7 +103,7 @@ public sealed class NoteCore(
     /// 获取 笔记
     /// </summary>
     /// <returns></returns>
-    public async Task<Delly.Note.Common.Kernel.Document.Entity.Note?> GetDataOrNullById(string id)
+    public async Task<DellyNote.Common.Kernel.Document.Entity.Note?> GetDataOrNullById(string id)
     {
         return await _noteDataCore.GetEntityAsync(id);
     }
@@ -112,7 +112,7 @@ public sealed class NoteCore(
     /// 查找 笔记
     /// </summary>
     /// <returns></returns>
-    public async Task<Delly.Note.Common.Kernel.Document.Entity.Note?> FindData(NoteFindDto dto)
+    public async Task<DellyNote.Common.Kernel.Document.Entity.Note?> FindData(NoteFindDto dto)
     {
         var query = _noteDataCore.Query();
         query = query.WhereIf(!dto.Title.IsNullOrWhiteSpace(), d => d.Title == dto.Title);
@@ -124,7 +124,7 @@ public sealed class NoteCore(
     /// 查询 笔记 集合
     /// </summary>
     /// <returns></returns>
-    public async Task<List<Delly.Note.Common.Kernel.Document.Entity.Note>> QueryDatas(NoteQueryDto dto)
+    public async Task<List<DellyNote.Common.Kernel.Document.Entity.Note>> QueryDatas(NoteQueryDto dto)
     {
         var query = _noteDataCore.Query();
         query = query.WhereIf(!dto.Title.IsNullOrWhiteSpace(), d => d.Title.Contains(dto.Title!));
@@ -136,7 +136,7 @@ public sealed class NoteCore(
     /// 分页查询 笔记 集合
     /// </summary>
     /// <returns></returns>
-    public async Task<PagedVo<Delly.Note.Common.Kernel.Document.Entity.Note>> QueryPagedDatas(NotePagedDto dto)
+    public async Task<PagedVo<DellyNote.Common.Kernel.Document.Entity.Note>> QueryPagedDatas(NotePagedDto dto)
     {
         // 建立查询
         var query = _noteDataCore.Query();
@@ -145,7 +145,7 @@ public sealed class NoteCore(
         // 获取总行数
         var rowCount = await query.CountAsync();
         // 执行分页查询并返回
-        var paged = new PagedVo<Delly.Note.Common.Kernel.Document.Entity.Note>(dto)
+        var paged = new PagedVo<DellyNote.Common.Kernel.Document.Entity.Note>(dto)
         {
             RowCount = rowCount,
             Rows = await query.Paged(dto).ToListAsync(),

@@ -1,9 +1,9 @@
-using Delly.Note.Razor.Extension;
-using Delly.Note.Razor.Localization;
-using Delly.Note.Razor.Model;
+using DellyNote.Razor.Extension;
+using DellyNote.Razor.Localization;
+using DellyNote.Razor.Model;
 using Jip.Kernel.Common.General.UnitOfWork;
 
-namespace Delly.Note.Razor.Pages;
+namespace DellyNote.Razor.Pages;
 
 /// <summary>
 /// 主页

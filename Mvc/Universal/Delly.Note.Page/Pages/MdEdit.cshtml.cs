@@ -1,12 +1,13 @@
-﻿using Delly.Note.Common.Kernel.Document;
-using Delly.Note.Razor.Extension;
-using Delly.Note.Razor.Localization;
-using Delly.Note.Razor.Model;
+﻿using DellyNote.Common.Kernel.Document;
+using DellyNote.Common.Kernel.Document.Entity;
+using DellyNote.Razor.Extension;
+using DellyNote.Razor.Localization;
+using DellyNote.Razor.Model;
 using Jip.Kernel.Common.General.UnitOfWork;
 using Nuo.Data.Expression.Query.Extension;
 using Nuo.Extension;
 
-namespace Delly.Note.Razor.Pages;
+namespace DellyNote.Razor.Pages;
 
 /// <summary>
 /// 编辑页
@@ -31,7 +32,7 @@ public class MdEditModel(
     /// <summary>
     /// 文章信息
     /// </summary>
-    public Delly.Note.Common.Kernel.Document.Entity.Note? Note { get; set; }
+    public Note? Note { get; set; }
 
     /// <summary>
     /// 异步 Get

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Delly.Note.Common.Kernel.Document.Note.Vo;
+namespace DellyNote.Common.Kernel.Document.Note.Vo;
 
 /// <summary>
 /// 笔记 查询视图输出

@@ -1,4 +1,5 @@
-﻿using Delly.Note.Common.General.Data;
+﻿using DellyNote.Common.Storage.Configure;
+using DellyNote.Common.General.Data;
 using Jip.Common.Data.Configure;
 using Jip.Common.General.Configure;
 using Jip.Common.Logger;
@@ -18,7 +19,7 @@ using Nuo.Security.License.Configure;
 using Nuo.WebApi.Jwt.Data;
 using Nuo.WebApi.Jwt.Extension;
 
-namespace Delly.Note.Startup.Ioc;
+namespace DellyNote.Startup.Ioc;
 
 /// <summary>
 /// 平台 WebApi 启动 容器配置
@@ -66,5 +67,9 @@ public sealed class DellyNoteStartupIocProfile : BaseIocProfile
         Console.WriteLine("Apply Licenses.json ...");
         var multiLicenseConfig = GenericConfigureHelper.ReadGenericConfig<MultiLicenseConfig>("Licenses.json");
         iocContainer.AddSingleton(multiLicenseConfig);
+        // 读取存储配置
+        Console.WriteLine("Apply Storage.json ...");
+        var storageConfig = GenericConfigureHelper.ReadGenericConfig<StorageConfig>("Storage.json");
+        iocContainer.AddSingleton(storageConfig);
     }
 }

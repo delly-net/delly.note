@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jip.Kernel.Common.General.Localization.Extension;
+namespace DellyNote.Common.General.Localization.Extension;
 
 /// <summary>
 /// 语言通用核心 扩展

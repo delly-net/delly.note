@@ -23,7 +23,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Delly.Note.App.General.Authorize;
+namespace DellyNote.App.General.Authorize;
 
 /// <summary>
 /// 账户

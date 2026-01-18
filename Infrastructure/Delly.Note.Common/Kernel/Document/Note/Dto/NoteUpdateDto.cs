@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Delly.Note.Common.Kernel.Document.Note.Dto;
+namespace DellyNote.Common.Kernel.Document.Note.Dto;
 
 /// <summary>
 /// 笔记 更新 DTO

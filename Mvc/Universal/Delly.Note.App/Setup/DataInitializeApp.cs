@@ -6,7 +6,7 @@ using Jip.Kernel.Define.Setup.DataInitialize.Dto;
 using Jip.WebApi.Kernel.App.General;
 using Jip.WebApi.Kernel.Service.Setup;
 
-namespace Delly.Note.App.Setup;
+namespace DellyNote.App.Setup;
 
 /// <summary>
 /// 数据初始化

@@ -9,9 +9,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Jip.Configuration.Common" Version="3.2.67" />
-	  <PackageReference Include="Jip.Kernel.Common" Version="3.2.67" />
-	  <PackageReference Include="Jip.WebApi.App" Version="3.2.67" />
+	  <PackageReference Include="Jip.WebApi.DbLog.TaskJob" Version="3.2.67" />
+	  <PackageReference Include="Jip.WebApi.Kernel.Plug" Version="3.2.67" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Delly.Note.App\DellyNote.App.csproj" />
+		<ProjectReference Include="..\Delly.Note.Page\DellyNote.Razor.csproj" />
 	</ItemGroup>
 
 </Project>

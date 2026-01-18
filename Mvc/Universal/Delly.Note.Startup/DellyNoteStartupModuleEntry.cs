@@ -1,11 +1,11 @@
-﻿using Delly.Note.App;
-using Delly.Note.Razor;
+﻿using DellyNote.App;
+using DellyNote.Razor;
 using Jip.WebApi.DbLog.TaskJob;
 using Jip.WebApi.Kernel.Plug;
 using Nuo.Ioc.Modular;
 using Nuo.Ioc.Modular.Attribute;
 
-namespace Delly.Note.Startup;
+namespace DellyNote.Startup;
 
 /// <summary>
 /// Delly Note启动 模块入口
