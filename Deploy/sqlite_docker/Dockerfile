@@ -20,9 +20,7 @@ RUN apk add --no-cache libc6-compat tzdata && \
 
 # 复制程序文件
 COPY files /app
-# 复制配置文件
-COPY files/DefaultConfig /etc/jip/
 # 设置主程序可运行
-RUN chmod +x /app/jip
+RUN chmod +x /app/delly-note
 # 执行主程序
-CMD ["/app/jip"]
+CMD ["/app/delly-note"]

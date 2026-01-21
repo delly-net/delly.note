@@ -1,9 +1,10 @@
 #/bin/bash
-# cd /opt/sctr
-name="jip-pgsql"
+name="delly-note-sqlite"
 server="docker.jueyun.net"
 echo "[+++] $name:$1"
 docker build -t $name:$1 .
+mkdir -p ./images
+cd ./images
 docker save -o $name-$1.tar $name:$1
 gzip $name-$1.tar
 echo "[>>>] $server/$name:$1"
