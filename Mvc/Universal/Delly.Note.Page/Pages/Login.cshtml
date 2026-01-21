@@ -1,0 +1,13 @@
+﻿@page
+@using DellyNote.Razor.Pages
+@model LoginModel
+
+<!-- Logo -->
+<section class="logo-section">
+    <img src="~/image/delly1_256.png" alt="@Model.Lpm.DellyNote" title="@Model.Lpm.DellyNote" class="logo" />
+</section>
+<section class="login-section">
+    <input id="txtUser" type="text" placeholder="用户名" />
+    <input id="txtPassword" type="password" placeholder="密码" />
+    <a href="javascript:;" class="success" onclick="ctx.login();">登录</a>
+</section>

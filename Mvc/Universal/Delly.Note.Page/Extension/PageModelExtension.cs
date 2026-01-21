@@ -101,4 +101,24 @@ public static class PageModelExtension
     {
         page.ViewData["banner_visible"] = isBannerVisible;
     }
+
+    /// <summary>
+    /// 设置添加笔记可见性
+    /// </summary>
+    /// <param name="page"></param>
+    /// <param name="visible"></param>
+    public static void SetAddNoteButtonVisible(this PageModel page, bool visible)
+    {
+        page.ViewData["btn_add_note_visible"] = visible;
+    }
+
+    /// <summary>
+    /// 设置登录可见性
+    /// </summary>
+    /// <param name="page"></param>
+    /// <param name="visible"></param>
+    public static void SetLoginButtonVisible(this PageModel page, bool visible)
+    {
+        page.ViewData["btn_login_visible"] = visible;
+    }
 }

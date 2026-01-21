@@ -1,0 +1,65 @@
+﻿/* logo展示区 */
+.logo-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem 0;
+}
+
+.logo-section .logo {
+    width: 100px;
+}
+
+.logo-section h1 {
+    padding: 0.6rem;
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.logo-section span {
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.login-section {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 320px;
+    padding: 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.login-section .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.login-section input[type=text],
+.login-section input[type=password] {
+    width: 100%;
+    color: var(--dark-text);
+    background: var(--primary-color);
+    padding: 0.5rem 0.6rem;
+    margin: 0 0 0.2rem 0;
+    border: 1px solid var(--dark-border);
+    border-radius: 3px;
+}
+
+.login-section a {
+    padding: 0 0.8rem;
+    line-height: 1.7rem;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    width: 100%;
+    text-align: center;
+}

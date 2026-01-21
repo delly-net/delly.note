@@ -83,8 +83,12 @@ public sealed class AccountApp : BaseModuleAppService
             UserCode = user.Code,
             UserName = user.Name,
         });
-        var response = _httpContextAccessor.HttpContext?.Response;
-        response?.SetJwtToken(jwtInfo, _jwtConfig);
+        var session = _httpContextAccessor.HttpContext?.Session;
+        if (session is null) { return; }
+        // response?.SetJwtToken(jwtInfo, _jwtConfig);
+        session.SetString("UserId", user.Id);
+        session.SetString("UserCode", user.Code);
+        session.SetString("UserName", user.Name);
     }
 
     /// <summary>

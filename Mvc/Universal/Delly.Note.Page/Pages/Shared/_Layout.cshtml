@@ -25,6 +25,9 @@
     var flag = ViewData["flag"]?.ToString();
     // 获取是否显示Banner图
     var isBannerVisible = (bool?)ViewData["banner_visible"] ?? false;
+    // 获取按钮可见性
+    var isButtonAddNoteVisible = (bool?)ViewData["btn_add_note_visible"] ?? false;
+    var isButtonLoginVisible = (bool?)ViewData["btn_login_visible"] ?? false;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -78,8 +81,14 @@
             <a href="/ContentPage?code=CONTACT_US&lang=@language" data-translate="contact">@lpm.ContactUs</a> *@
             </div>
             <div class="nav-buttons">
-                <a href="/MdEdit" class="primary">+ @lpm.AddMdNote</a>
-                <a href="/Login" class="success">@lpm.Login</a>
+                @if (isButtonAddNoteVisible)
+                {
+                    <a href="/MdEdit" class="primary">+ @lpm.AddMdNote</a>
+                }
+                @if (isButtonLoginVisible)
+                {
+                    <a href="/Login" class="success">@lpm.Login</a>
+                }
             </div>
         </nav>
     </header>
