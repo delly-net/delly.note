@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Nuo.Hosting.Application.Extension;
 
 // 初始化
-HostUtils.Initialize(true);
+HostUtils.Initialize(false,"/etc/delly/note");
 
 // 启动
 WebApplication.CreateBuilder(args).Build<Startup>().Run();

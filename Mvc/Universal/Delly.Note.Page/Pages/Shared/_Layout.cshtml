@@ -89,6 +89,10 @@
                 {
                     <a href="/Login" class="success">@lpm.Login</a>
                 }
+                else
+                {
+                    <a href="javascript:;" class="error" onclick="site.logout();">@lpm.Logout</a>
+                }
             </div>
         </nav>
     </header>
@@ -105,7 +109,7 @@
         </div>
     </section>
 
-    @* <script src="~/js/site.js" asp-append-version="true"></script> *@
+    <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 

@@ -74,6 +74,16 @@ public class ListModel(
         Key = Request.Query["key"].ToString();
         // 获取最新产品
         NotePaged = await GetNotePage(Key, page);
+        // 判断是否登录
+        var userCode = Session.GetString("UserCode");
+        if (userCode.IsNullOrWhiteSpace())
+        {
+            this.SetLoginButtonVisible(true);
+        }
+        else
+        {
+            this.SetAddNoteButtonVisible(true);
+        }
     }
 
     // 获取最新产品

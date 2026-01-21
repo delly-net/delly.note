@@ -5,7 +5,7 @@ using DellyNote.Startup;
 using DellyNote.Dev;
 
 // 初始化
-HostUtils.Initialize(true);
+HostUtils.Initialize(false);
 
 // 启动
 WebApplication.CreateBuilder(args).Build<Startup>().Run();

@@ -1,4 +1,7 @@
-﻿using Jip.Kernel.Common.Authorize;
+﻿using DellyNote.Common.OpenService.Extension;
+using Jip.Common.Service.Configure;
+using Jip.Common.Service.Util;
+using Jip.Kernel.Common.Authorize;
 using Jip.Kernel.Common.Feature;
 using Jip.Kernel.Common.General.Exception;
 using Jip.Kernel.Common.General.ObjectMap;
@@ -28,67 +31,70 @@ namespace DellyNote.App.General.Authorize;
 /// <summary>
 /// 账户
 /// </summary>
-public sealed class AccountApp : BaseModuleAppService
+/// <remarks>
+/// 账户
+/// </remarks>
+public sealed class AccountApp(
+    AccountCore accountCore,
+    JipUserDataCore jipUserDataCore,
+    //JipFeatureCategoryDataCore jipFeatureCategoryDataCore,
+    ExceptionCommonCore exceptionCommonCore,
+    //MapCommonCore mapCommonCore,
+    PasswordCommonCore passwordCommonCore,
+    IHttpContextAccessor httpContextAccessor,
+    JipOpenServiceConfig jipOpenServiceConfig
+        //IJwtManager jwtManager,
+        //JwtConfig jwtConfig,
+        ) : BaseModuleAppService
 {
     #region 依赖注入
 
-    private readonly AccountCore _accountCore;
-    private readonly JipUserDataCore _jipUserDataCore;
-    private readonly ExceptionCommonCore _exceptionCommonCore;
-    private readonly PasswordCommonCore _passwordCommonCore;
-    private readonly IHttpContextAccessor _httpContextAccessor;
-    private readonly IJwtManager _jwtManager;
-    private readonly JwtConfig _jwtConfig;
-
-    /// <summary>
-    /// 账户
-    /// </summary>
-    public AccountApp(
-        AccountCore accountCore,
-        JipUserDataCore jipUserDataCore,
-        JipFeatureCategoryDataCore jipFeatureCategoryDataCore,
-        ExceptionCommonCore exceptionCommonCore,
-        MapCommonCore mapCommonCore,
-        PasswordCommonCore passwordCommonCore,
-        IHttpContextAccessor httpContextAccessor,
-        IJwtManager jwtManager,
-        JwtConfig jwtConfig
-        )
-    {
-        _accountCore = accountCore;
-        _jipUserDataCore = jipUserDataCore;
-        _exceptionCommonCore = exceptionCommonCore;
-        _passwordCommonCore = passwordCommonCore;
-        _httpContextAccessor = httpContextAccessor;
-        _jwtManager = jwtManager;
-        _jwtConfig = jwtConfig;
-    }
+    private readonly AccountCore _accountCore = accountCore;
+    private readonly JipUserDataCore _jipUserDataCore = jipUserDataCore;
+    private readonly ExceptionCommonCore _exceptionCommonCore = exceptionCommonCore;
+    private readonly PasswordCommonCore _passwordCommonCore = passwordCommonCore;
+    private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
+    private readonly JipOpenServiceConfig _jipOpenServiceConfig = jipOpenServiceConfig;
 
     #endregion
 
     /// <summary>
     /// 登录
     /// </summary>
-    /// <param name="input"></param>
+    /// <param name="dto"></param>
     /// <returns></returns>
-    public async Task Login(AccountLoginDto input)
+    public async Task Login(AccountLoginDto dto)
     {
-        var user = await _accountCore.Login(input);
-        if (user is null) { throw _exceptionCommonCore.UserFriendly(Lpm.IncorrectUsernameOrPassword); }
-        using var work = _jwtManager.CreateWork();
-        // 输出Jwt
-        var jwtInfo = work.SetInfoByDataTo(new WebApiJwtData()
-        {
-            UserId = user.Id,
-            UserCode = user.Code,
-            UserName = user.Name,
-        });
+        var res = await JipServiceUtils.GetHelper(_jipOpenServiceConfig).LoginAsync(dto);
+        if (!res.Success) { throw _exceptionCommonCore.UserFriendly(res.Message!); }
+        //var user = await _accountCore.Login(input);
+        //if (user is null) { throw _exceptionCommonCore.UserFriendly(Lpm.IncorrectUsernameOrPassword); }
+        //using var work = _jwtManager.CreateWork();
+        //// 输出Jwt
+        //var jwtInfo = work.SetInfoByDataTo(new WebApiJwtData()
+        //{
+        //    UserId = user.Id,
+        //    UserCode = user.Code,
+        //    UserName = user.Name,
+        //});
         var session = _httpContextAccessor.HttpContext?.Session;
         if (session is null) { return; }
         // response?.SetJwtToken(jwtInfo, _jwtConfig);
-        session.SetString("UserId", user.Id);
-        session.SetString("UserCode", user.Code);
-        session.SetString("UserName", user.Name);
+        // session.SetString("UserId", user.Id);
+        session.SetString("UserCode", dto.UserCode);
+        //session.SetString("UserName", user.Name);
+    }
+
+    /// <summary>
+    /// 注销
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <returns></returns>
+    public async Task Logout()
+    {
+        var session = _httpContextAccessor.HttpContext?.Session;
+        if (session is null) { return; }
+        session.Remove("UserCode");
     }
 
     /// <summary>

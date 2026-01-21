@@ -56,8 +56,8 @@ public class DellyNoteStartup: BaseGenericWebApiStartup
     /// <param name="app"></param>
     protected override void OnConfigureApplication(WebApplication app)
     {
-        base.OnConfigureApplication(app);
         // 使用Session
         app.UseSession();
+        base.OnConfigureApplication(app);
     }
 }

@@ -4,6 +4,7 @@ using Jip.Define.Data.Vo;
 using Jip.Kernel.Common.General.Exception;
 using Jip.Kernel.Common.General.ObjectMap;
 using Jip.WebApi.Kernel.App.General;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Nuo.Extension;
 using Nuo.WebApi.Jwt.Attribute;
@@ -17,7 +18,8 @@ namespace DellyNote.App.Kernel.Document;
 public sealed class NoteApp(
     NoteCore noteCore,
     MapCommonCore mapCommonCore,
-    ExceptionCommonCore exceptionCommonCore
+    ExceptionCommonCore exceptionCommonCore,
+    IHttpContextAccessor httpContextAccessor
     ) : BaseModuleAppService
 {
 
@@ -26,8 +28,20 @@ public sealed class NoteApp(
     private readonly NoteCore _noteCore = noteCore;
     private readonly MapCommonCore _mapCommonCore = mapCommonCore;
     private readonly ExceptionCommonCore _exceptionCommonCore = exceptionCommonCore;
+    private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
 
     #endregion
+
+    // 检查登录
+    private void CheckLogin()
+    {
+        var session = _httpContextAccessor.HttpContext?.Session;
+        if (session is null) { throw _exceptionCommonCore.UserFriendly("Login state missing."); }
+        // response?.SetJwtToken(jwtInfo, _jwtConfig);
+        // session.SetString("UserId", user.Id);
+        var userCode = session.GetString("UserCode");
+        if (userCode.IsNullOrWhiteSpace()) { throw _exceptionCommonCore.UserFriendly("Login state missing."); }
+    }
 
     #region 新增
 
@@ -38,6 +52,7 @@ public sealed class NoteApp(
     /// <returns></returns>
     public async Task<NoteVo> Insert(NoteInsertDto dto)
     {
+        CheckLogin();
         var data = _mapCommonCore.Map<DellyNote.Common.Kernel.Document.Entity.Note>(dto);
         await _noteCore.Insert(data);
         return _mapCommonCore.Map<NoteVo>(data);
@@ -50,6 +65,7 @@ public sealed class NoteApp(
     /// <returns></returns>
     public async Task BatchInsert(List<NoteInsertDto> dto)
     {
+        CheckLogin();
         var data = _mapCommonCore.MapList<DellyNote.Common.Kernel.Document.Entity.Note>(dto);
         await _noteCore.InsertList(data);
     }
@@ -65,6 +81,7 @@ public sealed class NoteApp(
     /// <returns></returns>
     public async Task Delete(string id)
     {
+        CheckLogin();
         if (id.IsNullOrWhiteSpace()) { throw _exceptionCommonCore.FieldRequired("ID"); }
         await _noteCore.Delete(id);
     }
@@ -77,7 +94,8 @@ public sealed class NoteApp(
     [HttpPost]
     public async Task BatchDelete(List<string> ids)
     {
-        if (!ids.Any()) { throw _exceptionCommonCore.FieldRequired("ID"); }
+        CheckLogin();
+        if (ids.Count == 0) { throw _exceptionCommonCore.FieldRequired("ID"); }
         await _noteCore.DeleteList(ids);
     }
 
@@ -92,6 +110,7 @@ public sealed class NoteApp(
     /// <returns></returns>
     public async Task Update(NoteUpdateDto dto)
     {
+        CheckLogin();
         var data = await _noteCore.GetDataById(dto.Id);
         _mapCommonCore.Map(dto, data);
         await _noteCore.Update(data);
@@ -107,6 +126,7 @@ public sealed class NoteApp(
     /// <returns></returns>
     public async Task<NoteVo> Get(string id)
     {
+        CheckLogin();
         if (id.IsNullOrWhiteSpace()) { throw _exceptionCommonCore.FieldRequired("ID"); }
         var data = await _noteCore.GetDataById(id);
         return _mapCommonCore.Map<NoteVo>(data);
@@ -118,6 +138,7 @@ public sealed class NoteApp(
     /// <returns></returns>
     public async Task<NoteVo?> Find(NoteFindDto dto)
     {
+        CheckLogin();
         var data = await _noteCore.FindData(dto);
         return data is null ? null : _mapCommonCore.Map<NoteVo>(data);
     }
@@ -128,6 +149,7 @@ public sealed class NoteApp(
     /// <returns></returns>
     public async Task<List<NoteVo>> Query(NoteQueryDto dto)
     {
+        CheckLogin();
         var datas = await _noteCore.QueryDatas(dto);
         return _mapCommonCore.MapList<NoteVo>(datas);
     }
@@ -138,6 +160,7 @@ public sealed class NoteApp(
     /// <returns></returns>
     public async Task<PagedVo<NoteVo>> Page(NotePagedDto dto)
     {
+        CheckLogin();
         var dataPaged = await _noteCore.QueryPagedDatas(dto);
         var paged = new PagedVo<NoteVo>(dataPaged);
         paged.Rows = _mapCommonCore.MapList<NoteVo>(dataPaged.Rows);

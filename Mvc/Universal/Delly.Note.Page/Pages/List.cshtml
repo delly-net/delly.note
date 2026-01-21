@@ -3,6 +3,10 @@
 @using Nuo.Extension
 @model ListModel
 
+@{
+    var isButtonLoginVisible = (bool?)ViewData["btn_login_visible"] ?? false;
+}
+
 <section class="note-section">
     @for (var i = 0; i < Model.NotePaged.Rows.Count; i += 3)
     {
@@ -14,8 +18,11 @@
                 <div class="note" style="border-left: 6px solid #7ab968;">
                     <div class="tools">
                         <div class="right">
-                            <a href="/MdEdit?id=@row.Id"><img src="/image/edit.svg" alt="" /></a>
-                            <a href="javascript:;" onclick="ctx.delete(`@row.Id`,`@row.Title`);"><img src="/image/delete.svg" alt="" /></a>
+                            @if (!isButtonLoginVisible)
+                            {
+                                <a href="/MdEdit?id=@row.Id"><img src="/image/edit.svg" alt="" /></a>
+                                <a href="javascript:;" onclick="ctx.delete(`@row.Id`,`@row.Title`);"><img src="/image/delete.svg" alt="" /></a>
+                            }
                         </div>
                     </div>
                     <h1><a href="/Content?id=@row.Id" target="_blank">@row.Title</a></h1>

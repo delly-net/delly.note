@@ -4,6 +4,7 @@ using Jip.Common.Data.Extension;
 using Jip.Define.Data.Vo;
 using Jip.Kernel.Common.General.Exception;
 using Jip.WebApi.Service.Atom;
+using Microsoft.AspNetCore.Http;
 using Nuo.Data.Expression.Delete.Extension;
 using Nuo.Data.General.Extension;
 using Nuo.Extension;
@@ -15,13 +16,15 @@ namespace DellyNote.App.Kernel.Document;
 /// </summary>
 public sealed class NoteCore(
     ExceptionCommonCore exceptionCommonCore,
-    NoteDataCore noteDataCore
+    NoteDataCore noteDataCore,
+    IHttpContextAccessor httpContextAccessor
     ) : BaseGenericServiceCore
 {
     #region 依赖注入
 
     private readonly ExceptionCommonCore _exceptionCommonCore = exceptionCommonCore;
     private readonly NoteDataCore _noteDataCore = noteDataCore;
+    private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
 
     #endregion
 

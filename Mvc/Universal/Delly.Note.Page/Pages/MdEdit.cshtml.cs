@@ -55,6 +55,12 @@ public class MdEditModel(
         await LoadNote(noteId);
         // 设置标题
         this.SetTitle(Note is null ? "新增笔记" : $"修改笔记 - {Note.Title}");
+        // 判断是否登录
+        var userCode = Session.GetString("UserCode");
+        if (userCode.IsNullOrWhiteSpace())
+        {
+            Response.Redirect("/Login");
+        }
     }
 
     /// <summary>

@@ -28,6 +28,6 @@ ctx.login = async () => {
         return;
     }
     alert("登录成功");
-    return res.data;
+    location.href = "/";
 }
 

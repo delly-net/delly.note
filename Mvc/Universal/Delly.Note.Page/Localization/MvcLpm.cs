@@ -63,6 +63,13 @@ public sealed class MvcLpm : BaseLanguageModulePack
     public string? Login { get; set; }
 
     /// <summary>
+    /// 注销
+    /// </summary>
+    [NotNull]
+    [Initial("注销")]
+    public string? Logout { get; set; }
+
+    /// <summary>
     /// 让笔记更简单
     /// </summary>
     [NotNull]

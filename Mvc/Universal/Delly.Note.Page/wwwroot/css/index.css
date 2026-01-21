@@ -65,10 +65,52 @@
     color: var(--dark-text);
 }
 
+.note-section .note h1 a {
+    color: var(--dark-text);
+    text-decoration: none;
+}
+
 .note-section .note span {
     margin-top: 0.5rem;
     font-size: 0.8rem;
     font-weight: normal;
     font-style: italic;
     color: var(--dark-text-weak);
+}
+
+.note-section .note .tools {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 0 0.5rem;
+    flex-direction: row;
+}
+
+.note-section .note .tools .left {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    flex-direction: row;
+}
+
+.note-section .note .tools .right {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    flex-direction: row;
+    padding: 0 0.5rem;
+}
+
+.note-section .note .tools .right a {
+    display: block;
+}
+
+.note-section .note .tools .right img {
+    display: block;
+    height: 0.8rem;
 }

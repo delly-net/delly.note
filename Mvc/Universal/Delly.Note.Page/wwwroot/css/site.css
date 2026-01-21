@@ -15,6 +15,8 @@
     --button-success-bg-hover: #379b37;
     --button-primary-bg: #337ab7;
     --button-primary-bg-hover: #1d5c93;
+    --button-error-bg: #d9534f;
+    --button-error-bg-hover: #c9302c;
 }
 
 html {
@@ -50,6 +52,20 @@ body {
 .success:hover {
     background: var(--button-success-bg-hover);
     box-shadow: var(--button-success-bg-hover) 0px 0px 1px;
+}
+
+/** 错误 */
+.error {
+    background: var(--button-error-bg);
+    box-shadow: var(--button-error-bg) 0px 0px 1px;
+    color: var(--primary-color);
+    display: block;
+    text-decoration: none;
+}
+
+.error:hover {
+    background: var(--button-error-bg-hover);
+    box-shadow: var(--button-error-bg-hover) 0px 0px 1px;
 }
 
 /** 主要 */

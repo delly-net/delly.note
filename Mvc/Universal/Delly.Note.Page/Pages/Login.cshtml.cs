@@ -61,7 +61,7 @@ public class LoginModel : BaseGenericPageModel
         this.SetTitle($"{lpm.Login} - {lpm.DellyNote}");
         // 设置按钮可见性
         this.SetAddNoteButtonVisible(false);
-        this.SetLoginButtonVisible(false);
+        this.SetLoginButtonVisible(true);
     }
 
 }

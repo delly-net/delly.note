@@ -12,4 +12,9 @@ public abstract class BaseGenericPageModel : PageModel
     /// 语言
     /// </summary>
     public string Language { get; private set; } = string.Empty;
+
+    /// <summary>
+    /// 交互信息
+    /// </summary>
+    public ISession Session => HttpContext.Session;
 }

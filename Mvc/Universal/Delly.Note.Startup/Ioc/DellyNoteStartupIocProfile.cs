@@ -66,10 +66,10 @@ public sealed class DellyNoteStartupIocProfile : BaseIocProfile
         Console.WriteLine("Apply Model.json ...");
         var modelingConfig = OpenModelConfigureUtils.GetModelConfig(iocContainer, openServiceConfig, "Model.json").GetAwaiter().GetResult();
         iocContainer.AddSingleton(modelingConfig);
-        // 注册Jwt
-        Console.WriteLine("Apply Jwt ...");
-        var jwtConfig = GenericConfigureHelper.ReadGenericConfig<JwtConfig>("Jwt.json");
-        iocContainer.AddJwt<WebApiJwtData>(jwtConfig);
+        //// 注册Jwt
+        //Console.WriteLine("Apply Jwt ...");
+        //var jwtConfig = GenericConfigureHelper.ReadGenericConfig<JwtConfig>("Jwt.json");
+        //iocContainer.AddJwt<WebApiJwtData>(jwtConfig);
         //// 读取服务注册配置
         //Console.WriteLine("Apply ServiceRegistry.json ...");
         //var serviceRegistryConfig = GenericConfigureHelper.ReadGenericConfig<JipOpenServiceConfig>("ServiceRegistry.json");
@@ -88,10 +88,10 @@ public sealed class DellyNoteStartupIocProfile : BaseIocProfile
         //// 注册Jwt
         //Console.WriteLine("Apply Jwt ...");
         //iocContainer.AddJwt<WebApiJwtData>(jwtConfig);
-        // 读取许可证配置
-        Console.WriteLine("Apply Licenses.json ...");
-        var multiLicenseConfig = GenericConfigureHelper.ReadGenericConfig<MultiLicenseConfig>("Licenses.json");
-        iocContainer.AddSingleton(multiLicenseConfig);
+        //// 读取许可证配置
+        //Console.WriteLine("Apply Licenses.json ...");
+        //var multiLicenseConfig = GenericConfigureHelper.ReadGenericConfig<MultiLicenseConfig>("Licenses.json");
+        //iocContainer.AddSingleton(multiLicenseConfig);
         // 读取存储配置
         Console.WriteLine("Apply Storage.json ...");
         var storageConfig = GenericConfigureHelper.ReadGenericConfig<StorageConfig>("Storage.json");
