@@ -64,6 +64,9 @@
                 var cm = this.codeMirror; // CodeMirror 实例
                 var editor = this;
 
+                // 关闭预览
+                editor.unwatch();
+
                 // 监听粘贴事件
                 cm.on("paste", function (evt, e) {
                     // console.log("editormd.paste",evt,e,window.clipboardData);

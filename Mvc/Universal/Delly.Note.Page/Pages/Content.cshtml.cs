@@ -53,6 +53,16 @@ public class ContentModel(
         await LoadNote(noteId);
         // 设置标题
         this.SetTitle(Note?.Title ?? string.Empty);
+        // 判断是否登录
+        var userCode = Session.GetString("UserCode");
+        if (userCode.IsNullOrWhiteSpace())
+        {
+            this.SetLoginButtonVisible(true);
+        }
+        else
+        {
+            this.SetAddNoteButtonVisible(true);
+        }
     }
 
     /// <summary>

@@ -114,3 +114,16 @@
     display: block;
     height: 0.8rem;
 }
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+
+    .note-section .row {
+        flex-direction: column;
+        justify-content: stretch;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+    }
+
+}

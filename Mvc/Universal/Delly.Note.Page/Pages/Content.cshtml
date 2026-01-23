@@ -8,6 +8,7 @@
     var lpm = Model.Lpm;
     // 获取标题
     var title = $"{ViewData["title"]?.ToString()} - {lpm.DellyNote}";
+    var isButtonLoginVisible = (bool?)ViewData["btn_login_visible"] ?? false;
 }
 
 <!DOCTYPE html>
@@ -30,8 +31,14 @@
                 <h1>@lpm.DellyNote</h1>
             </div>
             <div class="nav-right">
-                <a href="/MdEdit?id=@Model.Note?.Id" class="primary">@lpm.Edit</a>
-                <a href="/Login" class="success">@lpm.Login</a>
+                @if (isButtonLoginVisible)
+                {
+                    <a href="/Login" class="success">@lpm.Login</a>
+                }
+                else
+                {
+                    <a href="/MdEdit?id=@Model.Note?.Id" class="primary">@lpm.Edit</a>
+                }
             </div>
         </nav>
     </header>

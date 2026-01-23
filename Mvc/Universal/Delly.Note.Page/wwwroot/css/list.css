@@ -145,13 +145,12 @@
 /* 移动端适配 */
 @media (max-width: 768px) {
 
-    /* 主视觉区 */
-    .hero-section {
-        display: none;
+    .note-section .row {
+        flex-direction: column;
+        justify-content: stretch;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
     }
-
-    /* 产品格 */
-    .product-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
+    
 }
