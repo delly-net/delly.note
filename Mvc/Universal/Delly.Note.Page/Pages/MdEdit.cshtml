@@ -45,8 +45,12 @@
     <section class="edit-container">
         <div id="editormd"></div>
     </section>
+    <section class="text-container">
+        <textarea id="textmd"></textarea>
+    </section>
     <script type="text/javascript">
         let id=`@Model.Note?.Id`;
+        let isComposing = false;
         const md=`@Html.Raw(Model.Note?.EditContent)`;
         const args={
             width: "100%",
@@ -64,10 +68,35 @@
             onload: function () {
                 // console.log("editormd.onload",this);
                 var cm = this.codeMirror; // CodeMirror 实例
+                var textarea=this.codeEditor.getTextArea();
+                // console.log("editormd.textarea",textarea);
                 var editor = this;
 
                 // 关闭预览
                 // editor.unwatch();
+
+                // 标记输入法开始/结束
+                // textarea.addEventListener('compositionstart', () => {
+                //   isComposing = true;
+                // });
+                // textarea.addEventListener('compositionend', () => {
+                //   isComposing = false;
+                // });
+
+                // 重写输入事件，仅在输入法结束后处理
+                // textarea.addEventListener('input', (e) => {
+                //   if (isComposing) return;
+
+                //   实时过滤异常换行
+                //   const content = e.target.value;
+                //   移除由空格/标点触发的多余换行
+                //   const cleaned = content.replace(/([\s，。；：！？])\n/g, '$1');
+                //   if (cleaned !== content) {
+                //     e.target.value = cleaned;
+                //     触发编辑器同步
+                //     e.target.dispatchEvent(new Event('change'));
+                //   }
+                // });
 
                 // 监听粘贴事件
                 cm.on("paste", function (evt, e) {
@@ -113,14 +142,21 @@
 
         $(function(){
             const editor = editormd("editormd", args);
-            $("#lnkSave").bind('click', function(){
-               ctx.save({
-                    id:id,
-                    title: $("#txtTitle").val(),
-                    noteType: "MD",
-                    editContent: editor.getMarkdown(),
-                    renderHtml: editor.getHTML(),
-                }).then(data=>{ id=data.id; });
+            $("#textmd").change(()=>{
+                console.log("textmd.keyup",$("#textmd").val());
+                editor.setValue($("#textmd").val());
+                editor.previewing();
+            }).val(md);
+            $("#lnkSave").bind('click', ()=>{
+                setTimeout(()=>{
+                    ctx.save({
+                        id:id,
+                        title: $("#txtTitle").val(),
+                        noteType: "MD",
+                        editContent: editor.getMarkdown(),
+                        renderHtml: editor.getHTML(),
+                    }).then(data=>{ id=data.id; });
+                },100);
             });
         });
     </script>
