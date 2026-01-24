@@ -35,7 +35,7 @@
             </div>
             <div class="nav-right">
                 <a id="lnkSave" href="javascript:;" class="success">@lpm.Save</a>
-                <a href="/Login" class="success">@lpm.Login</a>
+                @* <a href="/Login" class="success">@lpm.Login</a> *@
             </div>
         </nav>
     </header>
@@ -56,6 +56,8 @@
             markdown : md,
             saveHTMLToTextarea : true,
             codeFold : true,
+            lineWrapping: false, // 禁用自动换行
+            watch: false, // 暂时关闭实时预览（避免频繁渲染）
             imageUpload : true,
             imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
             imageUploadURL : "/app/delly/FileStorage/Upload",
@@ -65,7 +67,7 @@
                 var editor = this;
 
                 // 关闭预览
-                editor.unwatch();
+                // editor.unwatch();
 
                 // 监听粘贴事件
                 cm.on("paste", function (evt, e) {
