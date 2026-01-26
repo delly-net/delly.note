@@ -49,8 +49,7 @@
     width: 100%;
     background: var(--light-bg);
     border-radius: 6px;
-    min-height: 140px;
-    padding: 0.5rem 0.5rem;
+    padding: 0.6rem 0.8rem 0.8rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,7 +58,7 @@
 
 .note-section .note h1 {
     padding: 0;
-    margin: 0 0 0.5rem 0;
+    margin: 0.2rem 0;
     font-size: 1rem;
     font-weight: normal;
     color: var(--dark-text);
@@ -71,7 +70,7 @@
 }
 
 .note-section .note span {
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
     font-size: 0.8rem;
     font-weight: normal;
     font-style: italic;
