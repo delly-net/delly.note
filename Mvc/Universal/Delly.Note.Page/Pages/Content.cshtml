@@ -48,17 +48,13 @@
     </section>
     <section class="content-container">
         <div id="catalog" class="catalog">
-            <div class="area">
-                <h1>目录</h1>
-                <ul>
-                    <li>无</li>
-                </ul>
-            </div>
+            <h1>目录</h1>
+            <ul>
+                <li>无</li>
+            </ul>
         </div>
         <div id="content" class="html">
-            <div class="area">
-                @Html.Raw(Model.Note?.RenderHtml)
-            </div>
+            @Html.Raw(Model.Note?.RenderHtml)
         </div>
     </section>
 </body>
